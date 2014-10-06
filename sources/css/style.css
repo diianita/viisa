@@ -8,7 +8,7 @@ input[type='submit'], .nav li.current a, .speaker-contacts > .contact:hover,
 .owl-page.active span, .owl-page.active span:hover,
 .preloader, .preloader:before, .preloader:after, div.fancy-select div.trigger.open,
 div.fancy-select ul.options li.selected, div.fancy-select ul.options li.selected.hover  {
-	background-color: #56ab54; /* <- Paste here your prefered color */
+	background-color: #70B7F5; /* <- Paste here your prefered color */
 }
 
 a, .accordion-heading span, .speaker-contacts > .contact, 
