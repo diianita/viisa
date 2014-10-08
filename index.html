@@ -6,7 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
         <!--== CSS Files ==-->
-        <link href="sources/css/bootstrap.css" rel="stylesheet" media="screen">
+        <link href="sources/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="sources/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
         <link href="sources/css/style.css" rel="stylesheet" media="screen">
         <link href="sources/css/animate.min.css" rel="stylesheet" media="screen">
         <link href="sources/css/font-awesome.css" rel="stylesheet" media="screen">
@@ -43,7 +44,7 @@
                             <div class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
                                     <li class="current"><a href="#header">Home</a></li>
-                                    <li><a href="#quines">Quines Somos</a></li>
+                                    <li><a href="#quines">Quienes Somos</a></li>
                                     <li><a href="#mision">Misi&oacuten</a></li>
                                     <li><a href="#vision">Visi&oacute;n</a></li>
                                     <li><a href="#register">Contacto</a></li>
@@ -141,7 +142,7 @@
                 <section id="quines" class="row">
                     <div class="col-sm-12">
                         <div class="section-header text-right">
-                            <h2>Quines somos</h2>
+                            <h2>Quienes somos</h2>
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-12">
@@ -156,7 +157,7 @@
                             para desarrollar la modalidad agrícola. La institución, entonces, retoma la denominación de Balbino 
                             García y pasa a funcionar con los cursos 1° a 4° de Bachillerato en el local donde ahora es la Sede B del 
                             Centro de Comercio y en 1971 recupera su sede actual.</p>
-                        <blockquote>Directiovos</blockquote>
+                        <blockquote>Directivos</blockquote>
                     </div>
                     <div class="col-md-7 col-sm-12">
                         <div class="flexslider">
@@ -211,44 +212,40 @@
                             <li>El compromiso de los actores institucionales.</li>
                             <li>Las relaciones interpersonales.</li>
                         </ul>
-                        
+
                     </div>
 
                 </section>
                 <!--==========-->
                 <!--===============================-->
-                <!--== Register ===================-->
+                <!--== Contacto ===================-->
                 <!--===============================-->
-                <section id="register" class="row">
+                <section id="contact" class="row">
                     <div class="col-sm-12">
                         <div class="section-header text-left">
-                            <h2>Contacto</h2>
-                            <h4>Cualquier inquietud puede comunicarse con nosotros</h4>
+                            <h2>Informaci&oacute;n de contacto</h2>
+                            <h4>Si tiene alguna inquietud puede comunicarse con nosotros</h4>
                         </div>
                     </div>
                     <div class="col-sm-12">
-                        <form id="register-form" method="post" class="form">
-                            <div class="col-md-2 col-sm-6">
-                                <input name="name" id="name" type="text" placeholder="Name" required>
-                            </div>
-                            <div class="col-md-3 col-sm-6">
-                                <input name="email" id="email" type="email" placeholder="Email" required>
-                            </div>
-                            <div class="col-md-2 col-sm-6">
-                                <input name="telephone" id="telephone" type="tel" placeholder="Telephone">
-                            </div>
-                            <div class="col-md-2 col-sm-6">
-                                <select name="ticket" id="ticket">
-                                    <option value="Silver">Silver</option>
-                                    <option value="Gold">Gold</option>
-                                    <option value="Platinum">Platinum</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 col-sm-12">
-                                <input type="submit" value="Register" name="submit">
-                            </div>
-                            <p class="form-notification" style="display: none;">Registration Complete</p>
-                        </form>
+                        <div class="col-sm-4">
+                            
+                            <p>
+                                Sede A: Calle 8 No. 9 - 50 <br>
+                                Tel. (57-7) 6550111
+                            </p>
+                            <p>
+                                Sede B: Carrera 4 No. 10 - 38 <br>
+                                Tel. 6560031
+                            </p>
+                            <p>
+                                Sede C: Carrera 13 No 10 - 50 <br>
+                                Tel. 6557585
+                            </p>
+                        </div>
+                        <div class="col-sm-8">
+                            <div id="map_canvas"></div>
+                        </div>
                     </div>
                 </section>
                 <!--==========-->
@@ -257,21 +254,17 @@
             </div>
         </div>
         <footer id="footer">
-            <div id="map_canvas"></div>
-
+            <!--<div id="map_canvas"></div>-->
             <div class="footer">
                 <div class="container box">
-
                     <section id="info" class="row">
                         <div class="col-sm-8">
-
                             <!--== Social Icons ==-->
                             <ul class="social-icons">
                                 <li><a target="_blank" href="https://www.facebook.com/pages/Colegio-Balbino-Garcia/253691104646546" class="fa fa-facebook"></a></li>
                                 <li><a target="_blank" href="https://twitter.com/Balbino_Garcia?original_referer=http%3A%2F%2Fcolbalbinogarcia.edu.co%2Findex.php%2Fquienes-somos%2Fsimbolos.html&profile_id=1340230842&tw_i=322161454436462592&tw_p=embeddedtimeline&tw_w=321744507605483520" class="fa fa-twitter"></a></li>
                                 <li><a target="_blank" href="https://www.youtube.com/channel/UCHkt6dxn85vuk5JYHSNizBA/feed?view_as=public" class="fa fa-youtube"></a></li>
                             </ul>
-
                         </div>
                         <div class="col-sm-4 text-right">
                             <div class="copyrights">
@@ -279,7 +272,6 @@
                             </div>
                         </div>
                     </section>
-
                 </div>
             </div>
         </footer>

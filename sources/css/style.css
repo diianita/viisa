@@ -345,10 +345,6 @@ Header CTA ========*/
 
 /*--------------------
 Navigation =========*/
-.nav a {
-    float: left;
-    padding: 8px 10px;
-}
 
 .nav a:hover {
     background: #efefef;
@@ -365,7 +361,7 @@ Navigation =========*/
 
 .navbar-nav > li {
     float: left;
-    overflow: hidden;
+    //overflow: hidden;
     border-radius: 2px;
 }
 
@@ -977,4 +973,12 @@ Copyrights =========*/
 
 .title-header{
     color: white;
+}
+
+
+
+
+.dropdown-menu li, .dropdown-menu li a{
+    background-color: white !important;
+    float: none !important;
 }
