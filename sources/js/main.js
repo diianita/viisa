@@ -2,7 +2,7 @@
     "use strict";
 
     ///////////////////////////////////////////////////// Your
-    var venueAddress = "Grand Place, 1000, Brussels"; // Venue
+    var venueAddress = "Calle 8 No. 9 - 50, Piedecuesta, Santander, Colombia"; // Venue
     /////////////////////////////////////////////////// Adress
 
     var fn = {
@@ -26,11 +26,11 @@
         // Google Maps
         GoogleMaps: function () {
 
-            var markerInfo = "<h4>" + venueAddress + "</h4>";
+            var markerInfo = "<h3>Sede A: " + venueAddress + "</h3>";
             $("#map_canvas").gmap3({
                 map: {
                     options: {
-                        maxZoom: 15,
+                        maxZoom: 17,
                         streetViewControl: false,
                         panControl: true,
                         panControlOptions: {

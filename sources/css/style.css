@@ -80,8 +80,13 @@ h1 {
 
 h2 {
     font-size: 3.4rem;
+    
 }
 
+h2.titulo-header{
+    text-shadow: 2px 2px 0px #000000;
+    background: rgba(87, 87, 87, 0.48);
+}
 h3 {
     font-size: 2.2rem;
 }
