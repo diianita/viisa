@@ -1,5 +1,7 @@
 <?php
-include 'connection.php';
+if(@!include 'connection.php'){
+    die('Falta configurar el archivo - connection.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

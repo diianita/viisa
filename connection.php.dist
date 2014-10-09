@@ -8,5 +8,5 @@
 
 require_once('classes/class.MySQLi.php');
 error_reporting(E_ALL);
-$db = new Mysqlidb('localhost', 'root', 'password', 'dbName');
+$db = new Mysqlidb('localhost', 'root', 'password', 'dbName') or die('No se pudo establecer la conexion con la base de datos');
 $data = array();
