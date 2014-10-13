@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+# Activar RewriteEngine
+RewriteEngine on
+RewriteBase / 
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+ 
+# Reescribir la URL solicitada por el usuario
+#   Entrada:  viisa.com/funtion
+#   Salida: funtion.php
+RewriteRule ^([a-zA-Z0-9]*)$ index.php?funtion=$1
+</IfModule>
