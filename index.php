@@ -4,4 +4,4 @@ if(@!include 'connection.php'){
 }
 ?>
 
-<?php include 'views/index.php';?>
+<?php include 'view/index.php';?>
