@@ -12,11 +12,17 @@ $funtion = (!isset($_GET['funtion']))? "index":$_GET['funtion'];
 <html lang="en">
 <?php include 'view/head.php';?>
     <body>
-        <?php include 'view/headerMenu.php';?>
-
-        <?php include 'view/'.$funtion.'.php';?>
+        <?php
+        if (isset($_SESSION['username'])) {
+            include 'view/headerMenuLogin.php';
         
-        <?php include 'view/login.php';?>
+        }else{
+            include 'view/headerMenuLogout.php';        
+            include 'view/login.php';
+        }
+        ?>
+        
+        <?php include 'view/'.$funtion.'.php';?>
         
 	<?php include 'view/footer.php';?>
         

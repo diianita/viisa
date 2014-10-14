@@ -173,23 +173,18 @@ input[type='submit']:active {
 
 #header {
     position: relative;
-    margin-bottom: -100px;
-    overflow: hidden;
 }
 
 .header-panel {
     position: absolute;
     width: 100%;
     min-height: 100px;
-    top: 0;
-    margin-top: 50px;
     z-index: 55;
 }
 
 .header-menu {
     position: absolute;
     width: 100%;
-    margin-top: 50px;
     padding: 0 15px;
     z-index: 55;
 }
@@ -245,7 +240,7 @@ input[type='submit']:active {
 }
 
 .content section {
-    padding: 50px 0;
+    padding: 100px 0;
 }
 
 .content section#features:first-child {
@@ -982,4 +977,3 @@ Copyrights =========*/
     background-color: white !important;
     float: none !important;
 }
-
