@@ -2,7 +2,7 @@
     "use strict";
 
     ///////////////////////////////////////////////////// Your
-    var venueAddress = "Calle 8 No. 9 - 50, Piedecuesta, Santander, Colombia"; // Venue
+    var venueAddress = "Av. Atlantica, 3264 - Copacabana, Rio de Janeiro - RJ, 22070-001, Brazil"; // Venue
     /////////////////////////////////////////////////// Adress
 
     var fn = {
@@ -24,11 +24,11 @@
         // Google Maps
         GoogleMaps: function () {
 
-            var markerInfo = "<h3>Sede A: " + venueAddress + "</h3>";
+            var markerInfo = "<h4>" + venueAddress + "</h4>";
             $("#map_canvas").gmap3({
                 map: {
                     options: {
-                        maxZoom: 17,
+                        maxZoom: 15,
                         streetViewControl: false,
                         panControl: true,
                         panControlOptions: {
@@ -105,17 +105,20 @@
             });
         },
 
+
+
         // One Page Navigation
         Navigation: function () {
             $('#menu').onePageNav({
                 currentClass: 'current',
-                filter: ':not(.external)',
                 scrollSpeed: 500,
                 scrollOffset: 60,
                 scrollThreshold: 0.2,
                 easing: 'swing'
             });
         },
+
+
 
         // Owl Carousel
         Carousel: function () {
@@ -186,6 +189,30 @@
 
     $(document).ready(function () {
         fn.Launch();
+        $('.open_blank').click(function(){
+           window.open($(this).data('url')); 
+           return false;
+        });
+        
+        $('.btn-coupon').click(function(){
+           $(this).css('display','none');
+           $('#coupon').css('display','block');
+        });
+        
+        $('.bp-partner-button-checkout').click(function(){
+           $('#modalPagos').modal('hide');
+        });
+        
+        
+        $('.href-idioma').click(function(){
+            var idioma = $(this).attr('data-lan');
+            if(idioma == "en"){
+                window.location.href = "/index";
+            }else{
+                window.location.href = "/"+idioma;
+            }
+        });
     });
 
 })(jQuery);
+

@@ -25,12 +25,12 @@
                             <li><a href="/#vision">Visi&oacute;n</a></li>
                             <li><a href="/#contact">Contacto</a></li>
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown">M&aacute;s <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">M&aacute;s <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="/managers">Directivos</a></li>
                                     <li><a href="/teachers">Docentes</a></li>
                                     <li><a href="/news">Noticias</a></li>
-                                    <li><a data-toggle="modal" data-target="#myModal">Biblioteca</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#myModal">Biblioteca</a></li>
                                 </ul>
                             </li>
                         </ul>
