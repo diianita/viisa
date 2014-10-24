@@ -13,7 +13,8 @@ $funtion = (!isset($_GET['funtion']))? "index":$_GET['funtion'];
 <?php include 'view/head.php';?>
     <body>
         <?php
-        if (isset($_SESSION['username'])) {
+        
+        if (!isset($_SESSION['username'])) {
             include 'view/headerMenuLogin.php';
         
         }else{

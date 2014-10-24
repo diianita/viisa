@@ -8,7 +8,7 @@
     <link href="sources/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
     
     <?php
-    if (isset($_SESSION['username'])) {
+    if (!isset($_SESSION['username'])) {
         ?>
         <link href="sources/css/style_1.css" rel="stylesheet" media="screen">
         <?php
