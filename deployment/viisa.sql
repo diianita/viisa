@@ -146,90 +146,24 @@ CREATE  TABLE IF NOT EXISTS `viisa`.`Prestamo` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `viisa`.`Personal`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `viisa`.`Personal` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `usuario` INT(11) NOT NULL ,
+  `descripcion` VARCHAR(45) NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `fk_Docente_Usuario1` (`usuario` ASC) ,
+  CONSTRAINT `fk_Docente_Usuario1`
+    FOREIGN KEY (`usuario` )
+    REFERENCES `viisa`.`Usuario` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
--- -----------------------------------------------------
--- Data for table `viisa`.`TipoUsuario`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `viisa`;
-INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`) VALUES (1, 'directivo');
-INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`) VALUES (2, 'docente');
-INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`) VALUES (3, 'bibliotecario');
-INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`) VALUES (4, 'estudiente');
-INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`) VALUES (5, 'familiar');
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `viisa`.`Usuario`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `viisa`;
-INSERT INTO `viisa`.`Usuario` (`tipoUsuario`, `id`, `contasena`, `nombre`, `apellido`, `email`) VALUES (4, 1, 'est123456', 'ana', 'lopez', 'ana.lopez@col.com');
-INSERT INTO `viisa`.`Usuario` (`tipoUsuario`, `id`, `contasena`, `nombre`, `apellido`, `email`) VALUES (5, 2, 'fam123456', 'carlos', 'lopez', 'carlos.lopez@col.com');
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `viisa`.`Familiar`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `viisa`;
-INSERT INTO `viisa`.`Familiar` (`id`, `usuario`, `vinculo`) VALUES (1, 2, 'padre');
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `viisa`.`Estudiante`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `viisa`;
-INSERT INTO `viisa`.`Estudiante` (`id`, `usuario`, `familiar`, `grado`) VALUES (1, 2, 1, 'noveno');
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `viisa`.`Materias`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `viisa`;
-INSERT INTO `viisa`.`Materias` (`id`, `nombre`) VALUES (1, 'matematicas');
-INSERT INTO `viisa`.`Materias` (`id`, `nombre`) VALUES (2, 'español');
-INSERT INTO `viisa`.`Materias` (`id`, `nombre`) VALUES (3, 'biologia');
-INSERT INTO `viisa`.`Materias` (`id`, `nombre`) VALUES (4, 'ingles');
-INSERT INTO `viisa`.`Materias` (`id`, `nombre`) VALUES (5, 'quimica');
-INSERT INTO `viisa`.`Materias` (`id`, `nombre`) VALUES (6, 'fisica');
-INSERT INTO `viisa`.`Materias` (`id`, `nombre`) VALUES (7, 'estadistica');
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `viisa`.`Libro`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `viisa`;
-INSERT INTO `viisa`.`Libro` (`id`, `materia`, `nombre`, `autor`) VALUES (1, 1, 'calculo analitico', 'graciela morentes');
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `viisa`.`Ejemplares`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `viisa`;
-INSERT INTO `viisa`.`Ejemplares` (`id`, `codigo`, `libro`, `descripcion`) VALUES (1, 'cal0912', 1, '');
-
-COMMIT;
-
--- -----------------------------------------------------
--- Data for table `viisa`.`Prestamo`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `viisa`;
-INSERT INTO `viisa`.`Prestamo` (`id`, `estado`, `usuario`, `ejemplar`) VALUES (1, 1, 1, 1);
-
-COMMIT;
