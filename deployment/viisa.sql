@@ -25,6 +25,7 @@ CREATE  TABLE IF NOT EXISTS `viisa`.`Usuario` (
   `nombre` VARCHAR(45) NULL ,
   `apellido` VARCHAR(45) NULL ,
   `email` TEXT NULL ,
+  `foto` TEXT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_Usuario_TipoUsuario` (`tipoUsuario` ASC) ,
   CONSTRAINT `fk_Usuario_TipoUsuario`
@@ -186,11 +187,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `viisa`;
-INSERT INTO `viisa`.`Usuario` (`tipoUsuario`, `id`, `contasena`, `nombre`, `apellido`, `email`) VALUES (4, 1, 'est123456', 'ana', 'lopez', 'ana.lopez@col.com');
-INSERT INTO `viisa`.`Usuario` (`tipoUsuario`, `id`, `contasena`, `nombre`, `apellido`, `email`) VALUES (5, 2, 'fam123456', 'carlos', 'lopez', 'carlos.lopez@col.com');
-INSERT INTO `viisa`.`Usuario` (`tipoUsuario`, `id`, `contasena`, `nombre`, `apellido`, `email`) VALUES (1, 3, 'dir123456', 'camila', 'restrepo', 'camila.restrepo@col.com');
-INSERT INTO `viisa`.`Usuario` (`tipoUsuario`, `id`, `contasena`, `nombre`, `apellido`, `email`) VALUES (2, 4, 'doc123456', 'diana', 'gomez', 'diana.gomez@col.com');
-INSERT INTO `viisa`.`Usuario` (`tipoUsuario`, `id`, `contasena`, `nombre`, `apellido`, `email`) VALUES (3, 5, 'bic123456', 'lucia', 'murillo', 'lucia.murillo@col.com');
+INSERT INTO `viisa`.`Usuario` (`tipoUsuario`, `id`, `contasena`, `nombre`, `apellido`, `email`, `foto`) VALUES (4, 1, 'est123456', 'ana', 'lopez', 'ana.lopez@col.com', NULL);
+INSERT INTO `viisa`.`Usuario` (`tipoUsuario`, `id`, `contasena`, `nombre`, `apellido`, `email`, `foto`) VALUES (5, 2, 'fam123456', 'carlos', 'lopez', 'carlos.lopez@col.com', NULL);
+INSERT INTO `viisa`.`Usuario` (`tipoUsuario`, `id`, `contasena`, `nombre`, `apellido`, `email`, `foto`) VALUES (1, 3, 'dir123456', 'camila', 'restrepo', 'camila.restrepo@col.com', NULL);
+INSERT INTO `viisa`.`Usuario` (`tipoUsuario`, `id`, `contasena`, `nombre`, `apellido`, `email`, `foto`) VALUES (2, 4, 'doc123456', 'diana', 'gomez', 'diana.gomez@col.com', NULL);
+INSERT INTO `viisa`.`Usuario` (`tipoUsuario`, `id`, `contasena`, `nombre`, `apellido`, `email`, `foto`) VALUES (3, 5, 'bic123456', 'lucia', 'murillo', 'lucia.murillo@col.com', NULL);
 
 COMMIT;
 
