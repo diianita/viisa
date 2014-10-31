@@ -3,7 +3,6 @@ Page::loadClass("Directivos");
 $cl_directivos = new Directivos();
 
 $directivos = $cl_directivos->getDirectivos();
-var_dump($directivos);
 ?>
 
 <div class="content">
@@ -12,22 +11,30 @@ var_dump($directivos);
             <div class="col-sm-12">
                 <div class="section-header text-center">
                     <h2>Directivos de la Instituci&oacute;n</h2>
-                    <h4>...</h4>
                 </div>
             </div>
             <div class="col-sm-12">
                 <div class="row">
-                    <div class="col-md-2">
-                        <div class="speaker caja">
-                            <div class="speaker-info">
-                                <div class="speaker-photo">
-                                    <img src="sources/images/user.png" alt="Tony Gallippi">
+                    <?php
+                    foreach ($directivos as $key => $value) {
+                        $img = Page::$site_url;
+                        $img .= ($value['foto'] != null)? $value['foto']: "sources/images/user.png";
+                        
+                        ?>
+                        <div class="col-md-2">
+                            <div class="speaker caja">
+                                <div class="speaker-info">
+                                    <div class="speaker-photo">
+                                        <img src="<?php echo $img;?>" alt="Tony Gallippi">
+                                    </div>
                                 </div>
+                                <h4><?php echo ucwords($value['nombre']." ".$value['apellido']); ?></h4>
+                                <h5><?php echo ucwords($value['descripcion']); ?></h5>
                             </div>
-                            <h4>Nombre Apellido</h4>
-                            <h5>Directora</h5>
                         </div>
-                    </div>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
 
