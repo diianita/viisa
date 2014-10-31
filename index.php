@@ -1,7 +1,9 @@
 <?php
-if(@!include 'connection.php'){
-    die('Falta configurar el archivo - connection.php');
-}
+
+include 'classes/class.Page.php';
+Page::loadConfig();
+Page::loadDB();
+
 ?>
 
 <?php
