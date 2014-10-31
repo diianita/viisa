@@ -189,29 +189,10 @@
 
     $(document).ready(function () {
         fn.Launch();
-        $('.open_blank').click(function(){
-           window.open($(this).data('url')); 
-           return false;
-        });
         
-        $('.btn-coupon').click(function(){
-           $(this).css('display','none');
-           $('#coupon').css('display','block');
-        });
-        
-        $('.bp-partner-button-checkout').click(function(){
-           $('#modalPagos').modal('hide');
-        });
-        
-        
-        $('.href-idioma').click(function(){
-            var idioma = $(this).attr('data-lan');
-            if(idioma == "en"){
-                window.location.href = "/index";
-            }else{
-                window.location.href = "/"+idioma;
-            }
-        });
+        jQuery.validator.setDefaults({
+            debug: true
+        });        
     });
 
 })(jQuery);
