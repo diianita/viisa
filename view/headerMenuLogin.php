@@ -13,7 +13,7 @@
 
                         <!--== Logo ==-->
                         <span class="navbar-brand logo">
-                            <span class="fa fa-map-marker"></span>Colegio Balbino García
+                            <span class="logo-balbino"></span><h3>Colegio Balbino García</h3>
                         </span>
 
                     </div>

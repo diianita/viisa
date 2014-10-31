@@ -2,7 +2,7 @@
     "use strict";
 
     ///////////////////////////////////////////////////// Your
-    var venueAddress = "Av. Atlantica, 3264 - Copacabana, Rio de Janeiro - RJ, 22070-001, Brazil"; // Venue
+    var venueAddress = "Calle 8 No. 9 - 50, Piedecuesta, Santander, Colombia"; // Venue
     /////////////////////////////////////////////////// Adress
 
     var fn = {
@@ -28,7 +28,7 @@
             $("#map_canvas").gmap3({
                 map: {
                     options: {
-                        maxZoom: 15,
+                        maxZoom: 17,
                         streetViewControl: false,
                         panControl: true,
                         panControlOptions: {
