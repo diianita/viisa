@@ -6,19 +6,7 @@
     <!--== CSS Files ==-->
     <link href="/sources/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="/sources/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
-    
-    <?php
-    //if (!isset($_SESSION['username'])) {
-        ?>
-        <link href="/sources/css/style_1.css" rel="stylesheet" media="screen">
-        <?php
-        /*
-    }else{
-        ?>
-        <link href="/sources/css/style.css" rel="stylesheet" media="screen">
-        <?php
-    }*/
-    ?>
+    <link href="/sources/css/style_1.css" rel="stylesheet" media="screen">
     
     <link href="/sources/css/animate.min.css" rel="stylesheet" media="screen">
     <link href="/sources/css/font-awesome.css" rel="stylesheet" media="screen">

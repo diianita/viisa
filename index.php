@@ -11,20 +11,54 @@ if (strlen($function) == 0) {
 
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'view/head.php'; ?>
+    <?php include 'view/head.php'; ?>
     <body>
+        <?php
+        $user_type = (!isset($_SESSION['tipoUsuario'])) ? $_SESSION['tipoUsuario'] : "";
+        $user_email = (!isset($_SESSION['email'])) ? $_SESSION['email'] : "";
+        $user_id = (!isset($_SESSION['id'])) ? $_SESSION['id'] : "";
 
+        switch ($nivel) {
+            case "1":
+                include 'view/menuDirectivo.php';
+                break;
+            case "2":
+                include 'view/menuDocente.php';
+                break;
+            case "3":
+                include 'view/menuBibliotecario.php';
+                break;
+            case "4":
+                include 'view/menuEstudiante.php';
+                break;
+            case "5":
+                include 'view/menuFamiliar.php';
+                break;
+            default:
+                include 'view/menuLogout.php';
+                break;
+        }
 
-<?php
-if (!isset($_SESSION['username'])) {
-    include 'view/headerMenuLogin.php';
-} else {
-    include 'view/headerMenuLogout.php';
-    include 'view/login.php';
-}
-?>
-
-        <?php include 'view/' . $function . '.php'; ?>
+        switch ($function) {
+            case "index":
+            case "managers":
+            case "teachers":
+                include 'view/' . $function . '.php';
+                break;
+            case "login":
+                if ($user_id == "") {
+                    include 'view/login.php';
+                }
+                break;
+            default:
+                if ($user_id != "") {
+                    include 'view/' . $function . '.php';
+                } else {
+                    include 'view/errorAccess.php';
+                }
+                break;
+        }
+        ?>
 
         <?php include 'view/footer.php'; ?>
 
@@ -36,7 +70,7 @@ if (!isset($_SESSION['username'])) {
             ?>
             <script>
 
-                jQuery(document).ready(function ($) {
+                jQuery(document).ready(function($) {
                     var options = {
                         $AutoPlay: true,
                         $PauseOnHover: 1, //[Optional] Whether to pause when mouse over if a slideshow is auto playing, default value is false
@@ -83,8 +117,8 @@ if (!isset($_SESSION['username'])) {
 
             </script>
 
-    <?php }
-?>
+        <?php }
+        ?>
 
 
 

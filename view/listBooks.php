@@ -43,29 +43,29 @@ $cl_prestamos = new Prestamo();
                     <table id="mytable" class="table table-bordred table-striped table-hover">
                         <thead>
                             <th>ID</th>
-                        <th>Materia</th>
-                        <th>Nombre</th>
-                        <th>Autor</th>
-                        <th>Descripcion</th>
-                        <th>Editorial</th>
-                        <th>Cant. Ejemplares</th>
-                        <th>Cant. en Prestamo</th>
-                        <th>Cant. Disponibles</th>
-                        <th style="width: 200px">Acciones</th>
+                            <th>Materia</th>
+                            <th>Nombre</th>
+                            <th>Autor</th>
+                            <th>Descripcion</th>
+                            <th>Editorial</th>
+                            <th>Cant. Ejemplares</th>
+                            <th>Cant. en Prestamo</th>
+                            <th>Cant. Disponibles</th>
+                            <th style="width: 200px">Acciones</th>
                         </thead>
                         <tbody>
                             <?php foreach ($Books as $key => $value) { ?>
 
                                 <tr>
                                     <td><?php echo $value['id']?></td>
-                                    <td><?php echo $cl_materias->getMateria($value['materia'])[0]['nombre']?></td>
+                                    <td><?php //echo $cl_materias->getMateria($value['materia'])[0]['nombre']?></td>
                                     <td><?php echo $value['nombre']?></td>
-                                    <td><?php echo $cl_autor->getAuthor($value['autor'])[0]['nombre']?></td>
+                                    <td><?php //echo $cl_autor->getAuthor($value['autor'])[0]['nombre']?></td>
                                     <td><?php echo $value['descripcion']?></td>
-                                    <td><?php echo $cl_editorial->getEditorial($value['editorial'])[0]['nombre']?></td>
-                                    <td><?php echo $cl_ejemplares->getTotalEjemplares($value['id'])?></td>
-                                    <td><?php echo $cl_prestamos->getTotalPrestamos($value['id'])?></td>
-                                    <td><?php echo $cl_ejemplares->getTotalEjemplares($value['id']) - $cl_prestamos->getTotalPrestamos($value['id'])?></td>
+                                    <td><?php //echo $cl_editorial->getEditorial($value['editorial'])[0]['nombre']?></td>
+                                    <td><?php //echo $cl_ejemplares->getTotalEjemplares($value['id'])?></td>
+                                    <td><?php //echo $cl_prestamos->getTotalPrestamos($value['id'])?></td>
+                                    <td><?php //echo $cl_ejemplares->getTotalEjemplares($value['id']) - $cl_prestamos->getTotalPrestamos($value['id'])?></td>
                                     <td>
                                         <a class="btn btn-xs btn-warning">Ejemplares</a>
                                         <button class="btn btn-success btn-xs" data-book="<?php echo $value['id']?>" data-title="New" data-toggle="modal" data-target="#new" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button>

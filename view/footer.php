@@ -1,5 +1,4 @@
 <footer id="footer">
-    <!--<div id="map_canvas"></div>-->
     <div class="footer">
         <div class="container box">
             <section id="info" class="row">

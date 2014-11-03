@@ -1,5 +1,4 @@
 <!-- Modal -->
-
 <div class="content">
     <div class="container box">
         <section id="managers" class="row">
@@ -37,8 +36,6 @@
                             </div>
                         </form> 
                     </div>
-
-
                 </div>
             </div>
         </section>
