@@ -1,4 +1,5 @@
 <?php
+
 include 'headerBiblioteca.php';
 
 Page::loadConfig();

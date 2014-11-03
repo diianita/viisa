@@ -15,25 +15,14 @@
                         <span class="navbar-brand logo">
                             <span class="logo-balbino"></span><h3>Colegio Balbino García</h3>
                         </span>
-
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li class="current">
-                                <a href="/">Inicio</a></li>
-                            <li><a href="/#quines">Quienes Somos</a></li>
-                            <li><a href="/#mision">Misi&oacuten</a></li>
-                            <li><a href="/#vision">Visi&oacute;n</a></li>
-                            <li><a href="/#contact">Contacto</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">M&aacute;s <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a href="/managers">Directivos</a></li>
-                                    <li><a href="/teachers">Docentes</a></li>
-                                    <li><a href="/news">Noticias</a></li>
-                                    <li><a href="/biblioteca/">Biblioteca</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="/biblioteca">Inicio</a></li>
+                            <li><a href="/listBooks">Libros</a></li>
+                            <li><a href="/listaAutores">Autores</a></li>
+                            <li><a href="/listEditorial">Editoriales</a></li>
+                            <li><a href="/">Cerrar</a></li>                           
                         </ul>
                     </div>
                 </nav>

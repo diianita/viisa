@@ -1,14 +1,15 @@
 <?php
+
 include 'headerBiblioteca.php';
 
 Page::loadConfig();
 Page::loadDB();
 
-Page::loadClass("Editorial");
-$cl_editoriales = new Editorial();
+Page::loadClass("Author");
+$cl_autores = new Author();
 
 
-$Editoriales = $cl_editoriales->getEditoriales();
+$Autores = $cl_autores->getAutores();
 
 //var_dump($Autores);
 ?>
@@ -18,7 +19,7 @@ $Editoriales = $cl_editoriales->getEditoriales();
         <section id="adm-information" class="row">
             <div class="col-sm-12">
                 <div class="section-header text-center">
-                    <legend><h2>Lista de Editoriales</h2></legend>
+                    <legend><h2>Lista de Autores</h2></legend>
                 </div>
             </div>
             <div class="col-sm-12" style="padding-top: 50px">
@@ -34,7 +35,7 @@ $Editoriales = $cl_editoriales->getEditoriales();
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($Editoriales as $key => $value) { ?>
+                            <?php foreach ($Autores as $key => $value) { ?>
                                 <tr>
                                     <td><?php echo $value['id']?></td>
                                     <td><?php echo $value['nombre']?></td>
@@ -51,7 +52,6 @@ $Editoriales = $cl_editoriales->getEditoriales();
                     </table>
                 </div>
             </div>
-        </section>
     </div>
 </div>
 
