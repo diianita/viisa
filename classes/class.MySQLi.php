@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Documentacion de la Base de datos https://github.com/joshcam/PHP-MySQLi-Database-Class
+ */
+
 /**
  * MysqliDb Class
  *

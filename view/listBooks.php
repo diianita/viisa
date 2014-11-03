@@ -1,3 +1,34 @@
+<?php
+include 'headerBiblioteca.php';
+
+Page::loadConfig();
+Page::loadDB();
+
+Page::loadClass("Books");
+$cl_books = new Books();
+$Books = $cl_books->getBooks();
+
+
+Page::loadClass("Editorial");
+$cl_editorial = new Editorial();
+
+Page::loadClass("Author");
+$cl_autor = new Author();
+
+Page::loadClass("Materias");
+$cl_materias = new Materias();
+
+Page::loadClass("Ejemplar");
+$cl_ejemplares = new Ejemplar();
+
+
+Page::loadClass("Prestamo");
+$cl_prestamos = new Prestamo();
+
+
+//var_dump($Autores);
+?>
+
 <div class="content">
     <div class="container box">
         <section id="managers" class="row">
@@ -9,29 +40,40 @@
             </div>
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <table id="mytable" class="table table-bordred table-striped">
+                    <table id="mytable" class="table table-bordred table-striped table-hover">
                         <thead>
+                            <th>ID</th>
                         <th>Materia</th>
                         <th>Nombre</th>
                         <th>Autor</th>
+                        <th>Descripcion</th>
+                        <th>Editorial</th>
                         <th>Cant. Ejemplares</th>
                         <th>Cant. en Prestamo</th>
-                        <th>Acciones</th>
+                        <th>Cant. Disponibles</th>
+                        <th style="width: 200px">Acciones</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Matemáticas</td>
-                                <td>Calculo I</td>
-                                <td>Graciela</td>
-                                <td>15</td>
-                                <td>8</td>
-                                <td>
-                                    <button class="btn btn-success btn-xs" data-book="1" data-title="New" data-toggle="modal" data-target="#new" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button>
-                                    <button class="btn btn-primary btn-xs" data-book="1" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button>
-                                    <button class="btn btn-danger btn-xs" data-book="1" data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></button>
-                                </td>
-                            </tr>
+                            <?php foreach ($Books as $key => $value) { ?>
 
+                                <tr>
+                                    <td><?php echo $value['id']?></td>
+                                    <td><?php echo $cl_materias->getMateria($value['materia'])[0]['nombre']?></td>
+                                    <td><?php echo $value['nombre']?></td>
+                                    <td><?php echo $cl_autor->getAuthor($value['autor'])[0]['nombre']?></td>
+                                    <td><?php echo $value['descripcion']?></td>
+                                    <td><?php echo $cl_editorial->getEditorial($value['editorial'])[0]['nombre']?></td>
+                                    <td><?php echo $cl_ejemplares->getTotalEjemplares($value['id'])?></td>
+                                    <td><?php echo $cl_prestamos->getTotalPrestamos($value['id'])?></td>
+                                    <td><?php echo $cl_ejemplares->getTotalEjemplares($value['id']) - $cl_prestamos->getTotalPrestamos($value['id'])?></td>
+                                    <td>
+                                        <a class="btn btn-xs btn-warning">Ejemplares</a>
+                                        <button class="btn btn-success btn-xs" data-book="<?php echo $value['id']?>" data-title="New" data-toggle="modal" data-target="#new" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button>
+                                        <button class="btn btn-primary btn-xs" data-book="<?php echo $value['id']?>" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button>
+                                        <button class="btn btn-danger btn-xs" data-book="<?php echo $value['id']?>" data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></button>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
 

@@ -19,7 +19,8 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li class="current"><a href="#header">Home</a></li>
+                            <li class="current">
+                                <a href="/">Inicio</a></li>
                             <li><a href="/#quines">Quienes Somos</a></li>
                             <li><a href="/#mision">Misi&oacuten</a></li>
                             <li><a href="/#vision">Visi&oacute;n</a></li>
@@ -30,7 +31,7 @@
                                     <li><a href="/managers">Directivos</a></li>
                                     <li><a href="/teachers">Docentes</a></li>
                                     <li><a href="/news">Noticias</a></li>
-                                    <li><a href="#" data-toggle="modal" data-target="#myModal">Biblioteca</a></li>
+                                    <li><a href="/biblioteca/">Biblioteca</a></li>
                                 </ul>
                             </li>
                         </ul>

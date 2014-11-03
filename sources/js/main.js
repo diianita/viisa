@@ -197,3 +197,8 @@
 
 })(jQuery);
 
+$(document).ready(function () {
+  
+  
+    
+})

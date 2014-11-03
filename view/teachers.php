@@ -1,4 +1,6 @@
 <?php
+include 'headerBiblioteca.php';
+
 Page::loadClass("Docente");
 $cl_docente = new Docente();
 

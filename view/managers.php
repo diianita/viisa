@@ -1,4 +1,6 @@
 <?php
+include 'headerBiblioteca.php';
+
 Page::loadClass("Directivos");
 $cl_directivos = new Directivos();
 

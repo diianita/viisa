@@ -1,6 +1,38 @@
+
 <div class="content">
     <div class="container box">
-        <section id="features" class="row">
+        
+         <!-- Jssor Slider Begin -->
+    <!-- You can move inline styles to css file or css block. -->
+    <div style="margin-top: 110px">
+        <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 1024px; height: 400px; overflow: hidden;margin-left: auto;margin-right: auto;">
+        <!-- Slides Container -->
+        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1024px; height: 400px;
+            overflow: hidden;">
+            <div><img u="image" src="/img/photography/002.jpg" /></div>
+            <div><img u="image" src="/img/photography/003.jpg" /></div>
+            <div><img u="image" src="/img/photography/004.jpg" /></div>
+            <div><img u="image" src="/img/photography/005.jpg" /></div>
+            <div><img u="image" src="/img/photography/006.jpg" /></div>
+            <div><img u="image" src="/img/photography/007.jpg" /></div>
+            <div><img u="image" src="/img/photography/008.jpg" /></div>
+            <div><img u="image" src="/img/photography/009.jpg" /></div>
+        </div>
+
+        <!-- Arrow Navigator Skin Begin -->
+        <!-- Arrow Left -->
+        <span u="arrowleft" class="jssora13l" style="width: 40px; height: 50px; top: 123px; left: 30px;">
+        </span>
+        <!-- Arrow Right -->
+        <span u="arrowright" class="jssora13r" style="width: 40px; height: 50px; top: 123px; right: 30px">
+        </span>
+        <!-- Arrow Navigator Skin End -->
+        
+    </div>
+    </div>
+    
+        
+    <section id="features" class="row" style="padding-top: 25px;padding-bottom: 5px;">
             <div class="col-md-4 col-xs-6">
                 <div class="event-info">
                     <div class="icon fa fa-map-marker"></div>
@@ -149,5 +181,3 @@
         <div id="gotop" class="gotop fa fa-arrow-up"></div>
     </div>
 </div>
-
-

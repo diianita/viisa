@@ -8,5 +8,22 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 # Reescribir la URL solicitada por el usuario
 #   Entrada:  viisa.com/funtion
 #   Salida: funtion.php
-RewriteRule ^([a-zA-Z0-9]*)$ index.php?funtion=$1
+
+RewriteRule ^([a-zA-Z0-9]*)/search/materia/(.*)/$ index.php?function=$1&search=$2&action=materia
+RewriteRule ^([a-zA-Z0-9]*)/search/materia/(.*)$ index.php?function=$1&search=$2&action=materia
+
+RewriteRule ^([a-zA-Z0-9]*)/search/autor/(.*)/$ index.php?function=$1&search=$2&action=autor
+RewriteRule ^([a-zA-Z0-9]*)/search/autor/(.*)$ index.php?function=$1&search=$2&action=autor
+
+RewriteRule ^([a-zA-Z0-9]*)/search/codigo/(.*)/$ index.php?function=$1&search=$2&action=codigo
+RewriteRule ^([a-zA-Z0-9]*)/search/codigo/(.*)$ index.php?function=$1&search=$2&action=codigo
+
+RewriteRule ^([a-zA-Z0-9]*)/search/nombre/(.*)/$ index.php?function=$1&search=$2&action=nombre
+RewriteRule ^([a-zA-Z0-9]*)/search/nombre/(.*)$ index.php?function=$1&search=$2&action=nombre
+
+
+RewriteRule ^([a-zA-Z0-9]*)/search/(.*)$ index.php?function=$1&search=$2
+
+RewriteRule ^([a-zA-Z0-9]*)/$ index.php?function=$1
+RewriteRule ^([a-zA-Z0-9]*)$ index.php?function=$1
 </IfModule>
