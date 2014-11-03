@@ -38,25 +38,29 @@ if (strlen($function) == 0) {
                 include 'view/menuLogout.php';
                 break;
         }
-
-        switch ($function) {
-            case "index":
-            case "managers":
-            case "teachers":
-                include 'view/' . $function . '.php';
-                break;
-            case "login":
-                if ($user_id == "") {
-                    include 'view/login.php';
-                }
-                break;
-            default:
-                if ($user_id != "") {
+        
+        if(file_exists('view/'.$function.'.php')){
+            switch ($function) {
+                case "index":
+                case "managers":
+                case "teachers":
                     include 'view/' . $function . '.php';
-                } else {
-                    include 'view/errorAccess.php';
-                }
-                break;
+                    break;
+                case "login":
+                    if ($user_id == "") {
+                        include 'view/login.php';
+                    }
+                    break;
+                default:
+                    if ($user_id != "") {
+                        include 'view/'.$function.'.php';
+                    } else {
+                        include 'view/errorAccess.php';
+                    }
+                    break;
+            }
+        }else{
+            include 'view/error404.php';
         }
         ?>
 
