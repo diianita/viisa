@@ -44,6 +44,7 @@ if (strlen($function) == 0) {
                 case "index":
                 case "managers":
                 case "teachers":
+                case "news":
                     include 'view/' . $function . '.php';
                     break;
                 case "login":
