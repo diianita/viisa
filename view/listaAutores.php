@@ -20,7 +20,7 @@ $Autores = $cl_autores->getAutores();
             <div class="col-sm-12">
                 <div class="section-header text-center">
                     <legend><h2>Lista de Autores</h2></legend>
-                    <a href="/newAutores" class="btn btn-danger">Agregar Nuevo Autor</a>
+                    <a href="/newAuthor" class="btn btn-danger">Agregar Nuevo Autor</a>
                 </div>
             </div>
             <div class="col-sm-12" style="padding-top: 50px">
