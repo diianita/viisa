@@ -34,6 +34,27 @@ function deleteEditorial(id) {
     }
 }
 
+function deleteAutor(id) {
+    if (confirm("Desea eliminar el autor, esta acción no se puede deshacer.")) {
+        $.ajax({
+            type: "POST",
+            url: "php/deleteAutor.php",
+            async: false,
+            data: {
+                id: id
+            },
+            success: function(data) {
+                var result = $.parseJSON(data);
+                if (result.success) {
+                    window.location = init.WEBSITE_URL + 'listaAutores';
+                } else {
+                    alert('Hubo un error!');
+                }
+            }
+        });
+    }
+}
+
 $(document).ready(function() {
 
     $('#form-login').validate({
