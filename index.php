@@ -19,20 +19,8 @@ if (strlen($function) == 0) {
         $user_id = (isset($_SESSION['id'])) ? $_SESSION['id'] : "";
 
         switch ($user_type) {
-            case "1":
-                include 'view/menuDirectivo.php';
-                break;
-            case "2":
-                include 'view/menuDocente.php';
-                break;
             case "3":
                 include 'view/menuBibliotecario.php';
-                break;
-            case "4":
-                include 'view/menuEstudiante.php';
-                break;
-            case "5":
-                include 'view/menuFamiliar.php';
                 break;
             case "6":
                 include 'view/menuAdmin.php';
