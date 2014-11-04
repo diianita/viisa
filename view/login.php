@@ -31,7 +31,7 @@
                                 </div> 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default">Cancelar</button>
-                                    <button type="button" class="btn btn-primary" onclick="processLogin()">Iniciar Sesi&oacute;n</button>
+                                    <button type="submit" class="btn btn-primary" id="btn-login">Iniciar Sesi&oacute;n</button>
                                 </div>
                             </div>
                         </form> 

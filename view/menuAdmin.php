@@ -21,9 +21,8 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <li><a href="/dashboard">Dashboard</a></li>
-                            <li><a href="/listBooks">Libros</a></li>
-                            <li><a href="/listaAutores">Autores</a></li>
-                            <li><a href="/listEditorial">Editoriales</a></li>
+                            <li><a href="/admInformation/">Informaci&oacute;n</a></li>
+                            <li><a href="/usuarios/">Usuarios</a></li>
                             <li><a href="/logout">Cerrar Sesion!</a></li>                           
                         </ul>
                     </div>

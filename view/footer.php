@@ -20,3 +20,5 @@
     </div>
 </footer>
 
+<script type="text/javascript">var init = <?php echo json_encode(Page::loadVars()) ?>;</script> 
+

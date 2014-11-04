@@ -1,25 +1,4 @@
 function processLogin(){
-   /* $('#form-login').validate({
-            rules: {
-                username: {
-                    required: true
-                },
-                password: {
-                    required: true,
-                    minlength: 5
-                }
-            },
-            messages: {
-                username: {
-                    required: "Porfavor ingrese su nombre de usuario"
-                },
-                password: {
-                    required: "Porfavor ingrese una contaseña",
-                    minlength: "Escriba minimo 5 carácteres"
-                }
-            }
-        });*/
-    
     var user = $('#username').val()
     var password = $('#password').val()
     
@@ -27,24 +6,43 @@ function processLogin(){
        // alert(data)
         var result = $.parseJSON(data);
         if(result.success){
-            window.location = '/dashboard/'
+            window.location = '/dashboard/';
         }else{
-            alert('Usuario y/o contaseña incorrectos')
+            alert('Usuario y/o contaseña incorrectos');
         }
-    })
+    });
 }
 
 $(document).ready(function () {
-
-//$("#form-login").validate({debug: true});
     
+    $('#form-login').validate({
+        debug: true,
+        rules: {
+            username: {
+                required: true
+            },
+            password: {
+                required: true,
+                minlength: 5
+            }
+        },
+        messages: {
+            username: {
+                required: "Porfavor ingrese su nombre de usuario"
+            },
+            password: {
+                required: "Porfavor ingrese una contaseña",
+                minlength: "Escriba minimo 5 carácteres"
+            }
+        }
+    });
 
-
-    /* $("#form-login").submit(function () {
+    $("#form-login").submit(function () {
      return false;
-     });*/
+    });
 
     $('#form-create-manager').validate({
+        debug: true,
         rules: {
             nombreManager: {
                 required: true,
@@ -88,10 +86,11 @@ $(document).ready(function () {
     /* -------------------------------------------------------------------*/
 
     $("#btn-login").click(function () {
-        if ($("#form-login").validate().checkForm()) {
-            alert("bien");
+        if($("#form-login").validate().checkForm()) {
+            processLogin();
         }
     });
+    
     $("#btn-crear-manager").click(function () {
         if ($("#form-create-manager").validate().checkForm()) {
             var foto = "";
@@ -117,10 +116,9 @@ $(document).ready(function () {
             });
         }
     });
+    
     $(".btn-crear-author").click(function () {
-
         if ($(".form-crear-author").validate().checkForm()) {
-
             var nombre = $('.nombre').val();
             $.ajax({
                 type: "POST",
@@ -138,10 +136,9 @@ $(document).ready(function () {
             });
         }
     });
+    
     $(".btn-crear-editorial").click(function () {
-
         if ($(".form-crear-editorial").validate().checkForm()) {
-
             var nombre = $('.nombre').val();
             $.ajax({
                 type: "POST",
@@ -159,8 +156,8 @@ $(document).ready(function () {
             });
         }
     });
+    
     $(".guardar-materia-nueva").click(function () {
-
         var nombre = $('.materia-nueva').val();
         $.ajax({
             type: "POST",
@@ -179,8 +176,8 @@ $(document).ready(function () {
             }
         });
     });
+    
     $(".crear-libro").click(function () {
-
 // if ($(".agregar-libro").validate()) {
         var materias = $('.materias').val();
         var nombre = $('.nombre').val();
@@ -223,10 +220,7 @@ $(document).ready(function () {
             success: function (data) {
                 var result = $.parseJSON(data);
                 if (result.return) {
-                    window.location = '/listBooks'
-                    /*$('#myModal').modal('hide');
-                     $('.materias').append('<option value="' + result.id + '">' + result.nombre + '</option>')
-                     $('.materias').val(result.id)*/
+                    window.location = '/listBooks';
                 }
             }
         });

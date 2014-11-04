@@ -1,3 +1,10 @@
+<?php
+Page::loadClass("Directivos");
+$cl_directivos = new Directivos();
+
+$directivos = $cl_directivos->getDirectivos();
+?>
+
 <div class="content">
     <div class="container box">
         <section id="adm-information" class="row">

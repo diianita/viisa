@@ -90,7 +90,7 @@ class Page {
     public static function loadVars() {
         $init_values = array();
         $init_values['WEBSITE_URL'] = self::getUrl();
-        $init_values['USER_ID'] = isset($_SESSION['userId']) ? $_SESSION['userId'] : FALSE;
+        $init_values['USER_ID'] = isset($_SESSION['id']) ? $_SESSION['id'] : FALSE;
         return $init_values;
     }
 }
