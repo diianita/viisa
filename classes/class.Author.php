@@ -17,7 +17,7 @@ class Author {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
         $db->where("a.enabled", 1);
         $db->where("a.id", $autor_id);
-        $autor = $db->get("Autores as a", null, null);
+        $autor = $db->getOne("Autores as a", null, null);
 
         return $autor;
     }
@@ -31,6 +31,18 @@ class Author {
         } else {
             //echo "mal 2";
             return array("return" => false, "mensaje" => "Hubo un error, intentelo nuevamente.");
+        }
+    }
+    
+    public function updateAuthor($id, $nombre) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $db->where('id', $id);
+        
+        $data = Array('nombre' => $nombre);
+        if ($db->update('Autores', $data)){
+            return array("return" => true, "mensaje" => "Autor modificada");
+        }else{
+            return array("return" => false, "mensaje" => "update failed: ".$db->getLastError());
         }
     }
 

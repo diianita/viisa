@@ -42,7 +42,7 @@ $Autores = $cl_autores->getAutores();
                                     <td><?php echo $value['nombre']?></td>
                                     <td><?php echo ($value['enabled'] == 1)?'Activo':'Inactivo'?></td>
                                     <td>
-                                        <a class="btn btn-xs btn-primary margin-right-5px">Editar</a>
+                                        <a href="/autores/edit/<?php echo $value['id']?>" class="btn btn-xs btn-primary margin-right-5px">Editar</a>
                                         <a class="btn btn-xs btn-danger margin-right-5px">Eliminar</a>
                                     </td>
                                 </tr>

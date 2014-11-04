@@ -1,21 +1,21 @@
 <?php
 include 'headerBiblioteca.php';
 
-Page::loadClass("Editorial");
-$cl_editorial = new Editorial();
+Page::loadClass("Author");
+$cl_author = new Author();
 
-$editorial_id = $_REQUEST['value'];
+$author_id = $_REQUEST['value'];
 
 $error_count = 0;
 $error_msj = "";
 $form = "";
 
-if (!isset($_REQUEST['btn-edit-edotirial'])) {
-    $editorial = $cl_editorial->getEditorial($editorial_id);
+if (!isset($_REQUEST['btn-author-edotirial'])) {
+    $author = $cl_author->getAuthor($author_id);
 } else {
     $form = "enviado";
-    $editrial_nombre = $_REQUEST['nombre'];
-    $update = $cl_editorial->updateEditorial($editorial_id, $editrial_nombre);
+    $author_nombre = $_REQUEST['nombre'];
+    $update = $cl_author->updateAuthor($author_id, $author_nombre);
 
     if (!$update['return']) {
         $error_count ++;
@@ -24,7 +24,7 @@ if (!isset($_REQUEST['btn-edit-edotirial'])) {
 }
 
 if ($error_count == 0 && trim($form)) {
-    @header("location: ".Page::getUrl()."listEditorial");
+    @header("location: " . Page::getUrl() . "listaAutores");
 } else {
     ?>
     <div class="content">
@@ -32,17 +32,18 @@ if ($error_count == 0 && trim($form)) {
             <section id="adm-information" class="row">
                 <div class="col-sm-12">
                     <div class="section-header text-center">
-                        <legend><h2>Modificar Editorial</h2></legend>
+                        <legend><h2>Modificar Autor</h2></legend>
                     </div>
                 </div>
                 <div class="col-sm-12" style="padding-top: 50px">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="well">
-                                <form class="form-horizontal form-crear-editorial" role="form" id="form-crear-editorial" action="<?php echo Page::getUrl() ?>editorial/edit/<?php echo $editorial_id ?>" method="POST">
+                                <form class="form-horizontal form-crear-author" role="form" id="form-crear-author" action="<?php echo Page::getUrl() ?>autores/edit/<?php echo $author_id ?>" method="POST">
+
                                     <div class="form-group" style="margin-top: 20px">
                                         <div class="col-sm-offset-1 col-sm-10">
-                                            <input class="form-control nombre" type="text"  name="nombre" value="<?php echo $editorial["nombre"] ?>">
+                                            <input class="form-control nombre" type="text" name="nombre" value="<?php echo $author["nombre"] ?>">
                                             <?php
                                             if($error_count > 0){
                                                 echo '<p class="has-error">'.$error_msj.'</p>';
@@ -52,8 +53,8 @@ if ($error_count == 0 && trim($form)) {
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-offset-1 col-sm-10">
-                                            <input type="hidden" name="btn-edit-edotirial" value="editar"/>
-                                            <button type="submit" class="btn btn-primary pull-right">modificar</button>
+                                            <input type="hidden" name="btn-author-edotirial" value="editar"/>
+                                            <button type="submit" class="btn btn-primary pull-right">Modificar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -70,6 +71,4 @@ if ($error_count == 0 && trim($form)) {
     </div>
     <?php
 }
-
-    
-    
+?>
