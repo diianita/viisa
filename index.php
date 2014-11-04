@@ -31,11 +31,13 @@ if (strlen($function) == 0) {
         }
         
         if(file_exists('view/'.$function.'.php')){
+            
             switch ($function) {
                 case "index":
                 case "managers":
                 case "teachers":
                 case "news":
+                case "findBook":
                     include 'view/' . $function . '.php';
                     break;
                 case "login":

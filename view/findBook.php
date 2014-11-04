@@ -66,7 +66,7 @@ $Books = $cl_books->getBooks($search, $Params);
         <section id="adm-information" class="row padding-top-5px">
             <div class="col-sm-12">
                 <div class="section-header text-center">
-                    <legend><h2>Busqueda de libros</h2></legend>
+                    <legend><h2>B&uacute;squeda de libros</h2></legend>
                 </div>
             </div>
             <div class="col-sm-12">
@@ -74,14 +74,14 @@ $Books = $cl_books->getBooks($search, $Params);
                     <form class="form-horizontal" role="form" onclick="return false">
                         <div class="form-group">
                             <div class="col-sm-offset-1 col-sm-10">
-                                <label class="pull-left margin-top-5px margin-right-5px" >Criterio de Busqueda: </label>
+                                <label class="pull-left margin-top-5px margin-right-5px" >Criterio de B&uacute;squeda: </label>
                                 <input type="text" class="form-control pull-left" id="searchText" value="<?php echo $search ?>" style="width: 650px">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-1 col-sm-10">
                                 <div class="form-group" style="margin-left: 10px">
-                                    <label class="pull-left margin-top-5px margin-right-5px" style="margin-right: 15px;">Tipo de Busqueda: </label>
+                                    <label class="pull-left margin-top-5px margin-right-5px" style="margin-right: 15px;">Tipo de B&uacute;squeda: </label>
                                     <select class="form-control pull-left seleccione-filtro" style="width: 150px">
                                         <option value="materia" <?php echo ($action == 'materia') ? 'selected=selected' : '' ?>>Materia</option>
                                         <option value="nombre" <?php echo ($action == 'nombre') ? 'selected=selected' : '' ?>>Nombre</option>
@@ -131,15 +131,15 @@ $Books = $cl_books->getBooks($search, $Params);
                                     <th>Cant. Disponibles</th>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($Books as $key => $value) { ?>
-
+                                        <?php foreach ($Books as $key => $value) {  
+                                        ?>
                                             <tr>
                                                 <td><?php echo $value['id_libro'] ?></td>
                                                 <td><?php echo $value['nombre_materia'] ?></td>
                                                 <td><?php echo $value['nombre_libro'] ?></td>
                                                 <td><?php echo $value['nombre_autor'] ?></td>
                                                 <td><?php echo $value['descripcion_libro'] ?></td>
-                                                <td><?php echo $cl_editorial->getEditorial($value['editorial'])[0]['nombre'] ?></td>
+                                                <td><?php echo $value['editorial_nombre'] ?></td>
                                                 <td><?php echo $cl_ejemplares->getTotalEjemplares($value['id_libro']) - $cl_prestamos->getTotalPrestamos($value['id_libro']) ?></td>
 
                                             </tr>

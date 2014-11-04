@@ -31,6 +31,7 @@
                                     <li><a href="/managers">Directivos</a></li>
                                     <li><a href="/teachers">Docentes</a></li>
                                     <li><a href="/news">Noticias</a></li>
+                                    <li><a href="/findBook">Buscar libros</a></li>
                                     <li><a href="/login">Iniciar sesi&oacute;n</a></li>
                                 </ul>
                             </li>
