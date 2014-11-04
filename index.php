@@ -17,7 +17,7 @@ if (strlen($function) == 0) {
         $user_type = (isset($_SESSION['tipoUsuario'])) ? $_SESSION['tipoUsuario'] : "";
         $user_email = (isset($_SESSION['email'])) ? $_SESSION['email'] : "";
         $user_id = (isset($_SESSION['id'])) ? $_SESSION['id'] : "";
-
+        
         switch ($user_type) {
             case "3":
                 include 'view/menuBibliotecario.php';
@@ -31,7 +31,6 @@ if (strlen($function) == 0) {
         }
         
         if(file_exists('view/'.$function.'.php')){
-            
             switch ($function) {
                 case "index":
                 case "managers":

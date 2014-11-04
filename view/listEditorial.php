@@ -8,10 +8,7 @@ Page::loadDB();
 Page::loadClass("Editorial");
 $cl_editoriales = new Editorial();
 
-
 $Editoriales = $cl_editoriales->getEditoriales();
-
-//var_dump($Autores);
 ?>
 
 <div class="content">
@@ -38,17 +35,15 @@ $Editoriales = $cl_editoriales->getEditoriales();
                         <tbody>
                             <?php foreach ($Editoriales as $key => $value) { ?>
                                 <tr>
-                                    <td><?php echo $value['id']?></td>
-                                    <td><?php echo $value['nombre']?></td>
-                                    <td><?php echo ($value['enabled'] == 1)?'Activo':'Inactivo'?></td>
+                                    <td><?php echo $value['id'] ?></td>
+                                    <td><?php echo $value['nombre'] ?></td>
+                                    <td><?php echo ($value['enabled'] == 1) ? 'Activo' : 'Inactivo' ?></td>
                                     <td>
-                                        <a class="btn btn-xs btn-primary margin-right-5px">Editar</a>
+                                        <a href="/editorial/edit/<?php echo $value['id']?>" class="btn btn-xs btn-primary margin-right-5px">Editar</a>
                                         <a class="btn btn-xs btn-danger margin-right-5px">Eliminar</a>
                                     </td>
                                 </tr>
-                                <?php } ?>
-
-
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

@@ -150,7 +150,7 @@ $(document).ready(function () {
                 success: function (data) {
                     var result = $.parseJSON(data);
                     if (result.return) {
-                        window.location = '/editorial';
+                        window.location = '/listEditorial';
                     }
                 }
             });

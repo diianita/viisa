@@ -26,6 +26,14 @@ RewriteRule ^([a-zA-Z0-9]*)/search/codigo/(.*)$ index.php?function=$1&search=$2&
 RewriteRule ^([a-zA-Z0-9]*)/search/nombre/(.*)/$ index.php?function=$1&search=$2&action=nombre
 RewriteRule ^([a-zA-Z0-9]*)/search/nombre/(.*)$ index.php?function=$1&search=$2&action=nombre
 
+RewriteRule ^([a-zA-Z0-9]*)/new/$ index.php?function=$1New
+RewriteRule ^([a-zA-Z0-9]*)/new$ index.php?function=$1New
+
+RewriteRule ^([a-zA-Z0-9]*)/edit/(.*)/$ index.php?function=$1Edit&value=$2
+RewriteRule ^([a-zA-Z0-9]*)/edit/(.*)$ index.php?function=$1Edit&value=$2
+
+RewriteRule ^([a-zA-Z0-9]*)/detail/(.*)/$ index.php?function=$1Detail&value=$2
+RewriteRule ^([a-zA-Z0-9]*)/detail/(.*)$ index.php?function=$1Detail&value=$2
 
 RewriteRule ^([a-zA-Z0-9]*)/search/(.*)$ index.php?function=$1&search=$2
 
