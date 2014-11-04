@@ -17,7 +17,7 @@ class Editorial {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
         $db->where("a.enabled", 1);
         $db->where("a.id", $editorial_id);
-        $editorial = $db->get("Editoriales as a", null, null);
+        $editorial = $db->getOne("Editoriales as a", null, null);
 
         return $editorial;
     }
@@ -34,6 +34,15 @@ class Editorial {
         }
     }
 
+    public function updateEditorial($id, $nombre) {
+        $data = Array('nombre' => $nombre);
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $db->where('id', $id);
+        if ($db->update('Editoriales', $data)){
+            return array("return" => true, "mensaje" => "Editorial modificada");
+        }else{
+            return array("return" => flase, "mensaje" => "update failed: ".$db->getLastError());
+        }
+    }
 }
-
 ?>
