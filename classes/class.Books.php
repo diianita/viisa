@@ -35,12 +35,12 @@ class Books {
                         $Query = 'a.nombre like "%' . $query . '%"';
                         break;
                 }
-                $autores = $db->rawQuery('SELECT *, a.descripcion as descripcion_libro, a.nombre as nombre_libro, m.nombre as nombre_materia, au.nombre as nombre_autor from Libro as a, Autores as au, Materias as m, Ejemplares as e  where e.libro = a.id and m.id = a.materia and au.id = a.autor and a.enabled=1 and '.$Query.' ', null);
+                $autores = $db->rawQuery('SELECT *, a.id as id_libro, ed.nombre as editorial_nombre, a.descripcion as descripcion_libro,  a.nombre as nombre_libro, m.nombre as nombre_materia, au.nombre as nombre_autor from Libro as a, Autores as au, Materias as m, Ejemplares as e, Editoriales as ed  where ed.id = a.editorial and  e.libro = a.id and m.id = a.materia and au.id = a.autor and a.enabled=1 and '.$Query.' order by id_libro', null);
             } else {
-                $autores = $db->rawQuery('SELECT *, a.nombre as nombre_libro from Libro as a where enabled=1 and nombre like "%' . $query . '%" ', null);
+                $autores = $db->rawQuery('SELECT *, a.id as id_libro, ed.nombre as editorial_nombre, a.descripcion as descripcion_libro, a.nombre as nombre_libro, m.nombre as nombre_materia, au.nombre as nombre_autor from Libro as a, Autores as au, Materias as m, Ejemplares as e,  Editoriales as ed where ed.id = a.editorial  and e.libro = a.id and m.id = a.materia and au.id = a.autor and a.enabled=1 and nombre like "%' . $query . '%" order by id_libro', null);
             }
         } else {
-            $autores = $db->rawQuery('SELECT * from Libro as a where enabled=1', null);
+            $autores = $db->rawQuery('SELECT *, a.id as id_libro, ed.nombre as editorial_nombre, a.descripcion as descripcion_libro, a.nombre as nombre_libro, m.nombre as nombre_materia, au.nombre as nombre_autor from Libro as a, Autores as au, Materias as m, Ejemplares as e, Editoriales as ed where ed.id = a.editorial  and e.libro = a.id and m.id = a.materia and au.id = a.autor and a.enabled=1 order by id_libro', null);
         }
 
 

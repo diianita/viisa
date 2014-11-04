@@ -17,15 +17,14 @@
                             <span class="logo-balbino"></span><h3>Colegio Balbino García</h3>
                         </span>
                         </a>
-                        
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li><a href="/biblioteca">Inicio</a></li>
+                            <li><a href="/dashboard">Dashboard</a></li>
                             <li><a href="/listBooks">Libros</a></li>
                             <li><a href="/listaAutores">Autores</a></li>
                             <li><a href="/listEditorial">Editoriales</a></li>
-                            <li><a href="/">Cerrar Sesion!</a></li>                           
+                            <li><a href="/logout">Cerrar Sesion!</a></li>                           
                         </ul>
                     </div>
                 </nav>

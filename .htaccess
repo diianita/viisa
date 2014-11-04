@@ -8,6 +8,11 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 # Reescribir la URL solicitada por el usuario
 #   Entrada:  viisa.com/funtion
 #   Salida: funtion.php
+RewriteRule ^processLogin/$ view/processLogin.php?function=login
+RewriteRule ^logout/$ view/logout.php?function=logout
+RewriteRule ^processLogin$ view/processLogin.php?function=login
+RewriteRule ^logout$ view/logout.php?function=logout
+
 
 RewriteRule ^([a-zA-Z0-9]*)/search/materia/(.*)/$ index.php?function=$1&search=$2&action=materia
 RewriteRule ^([a-zA-Z0-9]*)/search/materia/(.*)$ index.php?function=$1&search=$2&action=materia

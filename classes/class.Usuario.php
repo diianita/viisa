@@ -1,5 +1,5 @@
 <?php
-
+@session_start();
 class Usuario {
 
     function __construct() {
@@ -20,6 +20,24 @@ class Usuario {
         $usuario = $db->get("Usuario as a", null, null);
 
         return $usuario;
+    }
+
+    public function login($u, $password) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $db->where("a.email", $u);
+        $db->where("a.contrasena", $password);
+        $usuario = $db->get("Usuario as a");
+       
+        if (count($usuario) > 0) {
+            $_SESSION['tipoUsuario'] = $usuario[0]['tipoUsuario'];
+            $_SESSION['email'] = $usuario[0]['email'];
+            $_SESSION['id'] = $usuario[0]['id'];
+
+            $result = TRUE;
+        } else {
+            $result = FALSE;
+        }
+        return $result;
     }
 
     public function createUsuario($author) {

@@ -25,6 +25,7 @@ $Usuarios = $cl_usuarios->getUsuarios();
             <div class="col-sm-12">
                 <div class="section-header text-center">
                     <legend><h2>Lista de Usuarios del Sistema</h2></legend>
+                    <a href="/newUser" class="btn btn-danger">Agregar Nuevo Usuario</a>
                 </div>
             </div>
             <div class="col-sm-12" style="padding-top: 50px">

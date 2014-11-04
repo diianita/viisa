@@ -134,13 +134,13 @@ $Books = $cl_books->getBooks($search, $Params);
                                         <?php foreach ($Books as $key => $value) { ?>
 
                                             <tr>
-                                                <td><?php echo $value['id'] ?></td>
+                                                <td><?php echo $value['id_libro'] ?></td>
                                                 <td><?php echo $value['nombre_materia'] ?></td>
                                                 <td><?php echo $value['nombre_libro'] ?></td>
                                                 <td><?php echo $value['nombre_autor'] ?></td>
                                                 <td><?php echo $value['descripcion_libro'] ?></td>
-                                                <td><?php //echo $cl_editorial->getEditorial($value['editorial'])[0]['nombre'] ?></td>
-                                                <td><?php echo $cl_ejemplares->getTotalEjemplares($value['id']) - $cl_prestamos->getTotalPrestamos($value['id']) ?></td>
+                                                <td><?php echo $cl_editorial->getEditorial($value['editorial'])[0]['nombre'] ?></td>
+                                                <td><?php echo $cl_ejemplares->getTotalEjemplares($value['id_libro']) - $cl_prestamos->getTotalPrestamos($value['id_libro']) ?></td>
 
                                             </tr>
                                         <?php } ?>

@@ -10,10 +10,10 @@
             <div class="col-sm-12">
                 <div class="row">
                     <div class="modal-dialog">
-                        <form class="form-horizontal" role="form" id="form-login">
+                        <form class="form-horizontal" id="form-login" action="/loginProcess/" method="post">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                   
                                     <h4 class="modal-title" id="myModalLabel">Inicio de Sesi&oacute;n</h4>
                                 </div>
                                 <div class="modal-body">
@@ -30,8 +30,8 @@
 
                                 </div> 
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-primary" id="btn-login">Iniciar Sesi&oacute;n</button>
+                                    <button type="button" class="btn btn-default">Cancelar</button>
+                                    <button type="button" class="btn btn-primary" onclick="processLogin()">Iniciar Sesi&oacute;n</button>
                                 </div>
                             </div>
                         </form> 

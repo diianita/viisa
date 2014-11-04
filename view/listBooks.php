@@ -37,6 +37,7 @@ $cl_prestamos = new Prestamo();
                 <div class="section-header text-center">
                     <h2>Lista De libros</h2>
                     <h4>...</h4>
+                    <a href="/newBook" class="btn btn-danger">Agregar Nuevo Libro</a>
                 </div>
             </div>
             <div class="col-md-12">
@@ -55,18 +56,20 @@ $cl_prestamos = new Prestamo();
                             <th style="width: 200px">Acciones</th>
                         </thead>
                         <tbody>
-                            <?php foreach ($Books as $key => $value) { ?>
+                            <?php foreach ($Books as $key => $value) { 
+                                //var_dump($value);
+                                ?>
 
                                 <tr>
-                                    <td><?php echo $value['id']?></td>
-                                    <td><?php //echo $cl_materias->getMateria($value['materia'])[0]['nombre']?></td>
-                                    <td><?php echo $value['nombre']?></td>
-                                    <td><?php //echo $cl_autor->getAuthor($value['autor'])[0]['nombre']?></td>
-                                    <td><?php echo $value['descripcion']?></td>
-                                    <td><?php //echo $cl_editorial->getEditorial($value['editorial'])[0]['nombre']?></td>
-                                    <td><?php //echo $cl_ejemplares->getTotalEjemplares($value['id'])?></td>
-                                    <td><?php //echo $cl_prestamos->getTotalPrestamos($value['id'])?></td>
-                                    <td><?php //echo $cl_ejemplares->getTotalEjemplares($value['id']) - $cl_prestamos->getTotalPrestamos($value['id'])?></td>
+                                    <td><?php echo $value['id_libro']?></td>
+                                    <td><?php echo $value['nombre_materia'] ?></td>
+                                    <td><?php echo $value['nombre'] ?></td>
+                                    <td><?php echo $value['nombre_autor'] ?></td>
+                                    <td><?php echo $value['descripcion_libro']?></td>
+                                    <td><?php echo $value['editorial_nombre']?></td>
+                                    <td><?php echo $cl_ejemplares->getTotalEjemplares($value['id_libro'])?></td>
+                                    <td><?php echo $cl_prestamos->getTotalPrestamos($value['id_libro'])?></td>
+                                    <td><?php echo $cl_ejemplares->getTotalEjemplares($value['id_libro']) - $cl_prestamos->getTotalPrestamos($value['id_libro'])?></td>
                                     <td>
                                         <a class="btn btn-xs btn-warning">Ejemplares</a>
                                         <button class="btn btn-success btn-xs" data-book="<?php echo $value['id']?>" data-title="New" data-toggle="modal" data-target="#new" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -82,10 +85,10 @@ $cl_prestamos = new Prestamo();
                     <ul class="pagination pull-right">
                         <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
                         <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
+                       <!-- <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
+                        <li><a href="#">5</a></li>-->
                         <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
                     </ul>
                 </div>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'classes/class.Page.php';
 Page::loadConfig();
 Page::loadDB();
@@ -14,13 +15,13 @@ if (strlen($function) == 0) {
     <?php include 'view/head.php'; ?>
     <body>
         <?php
-        $user_type = (!isset($_SESSION['tipoUsuario'])) ? $_SESSION['tipoUsuario'] : "";
-        $user_email = (!isset($_SESSION['email'])) ? $_SESSION['email'] : "";
-        $user_id = (!isset($_SESSION['id'])) ? $_SESSION['id'] : "";
-        
-        $user_type = "3";
+        $user_type = (isset($_SESSION['tipoUsuario'])) ? $_SESSION['tipoUsuario'] : "";
+        $user_email = (isset($_SESSION['email'])) ? $_SESSION['email'] : "";
+        $user_id = (isset($_SESSION['id'])) ? $_SESSION['id'] : "";
+        //var_dump($_SESSION);
+        /*$user_type = "3";
         $user_id = "1";
-
+*/
         switch ($user_type) {
             case "1":
                 include 'view/menuDirectivo.php';

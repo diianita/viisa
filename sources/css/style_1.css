@@ -1082,3 +1082,11 @@ Copyrights =========*/
 .content section.error-access{
     padding: 220px 0 !important;
 }
+
+.dashboard .glyphicon{
+    font-size: 86px;
+}
+
+.dashboard a.btn.btn-info.btn-lg {
+width: 159px;
+}

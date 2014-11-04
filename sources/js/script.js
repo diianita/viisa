@@ -1,31 +1,48 @@
+function processLogin(){
+   /* $('#form-login').validate({
+            rules: {
+                username: {
+                    required: true
+                },
+                password: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                username: {
+                    required: "Porfavor ingrese su nombre de usuario"
+                },
+                password: {
+                    required: "Porfavor ingrese una contaseña",
+                    minlength: "Escriba minimo 5 carácteres"
+                }
+            }
+        });*/
+    
+    var user = $('#username').val()
+    var password = $('#password').val()
+    
+    $.post('/processLogin/', {username:user, password:password}, function(data){
+       // alert(data)
+        var result = $.parseJSON(data);
+        if(result.success){
+            window.location = '/dashboard/'
+        }else{
+            alert('Usuario y/o contaseña incorrectos')
+        }
+    })
+}
+
 $(document).ready(function () {
 
-    //$("#form-login").validate({debug: true});
+//$("#form-login").validate({debug: true});
+    
 
-    $('#form-login').validate({
-        rules: {
-            username: {
-                required: true
-            },
-            password: {
-                required: true,
-                minlength: 5
-            }
-        },
-        messages: {
-            username: {
-                required: "Porfavor ingrese su nombre de usuario"
-            },
-            password: {
-                required: "Porfavor ingrese una contaseña",
-                minlength: "Escriba minimo 5 carácteres"
-            }
-        }
-    });
 
-    $("#form-login").submit(function () {
-        return false;
-    });
+    /* $("#form-login").submit(function () {
+     return false;
+     });*/
 
     $('#form-create-manager').validate({
         rules: {
@@ -65,12 +82,9 @@ $(document).ready(function () {
             }
         }
     });
-
-
     $("#form-create-manager").submit(function () {
         return false;
     });
-
     /* -------------------------------------------------------------------*/
 
     $("#btn-login").click(function () {
@@ -78,7 +92,6 @@ $(document).ready(function () {
             alert("bien");
         }
     });
-
     $("#btn-crear-manager").click(function () {
         if ($("#form-create-manager").validate().checkForm()) {
             var foto = "";
@@ -86,7 +99,6 @@ $(document).ready(function () {
             var apellido = $('#apellidoManager').val();
             var email = $('#emailManager').val();
             var cargo = $('#cargoManager').val();
-
             $.ajax({
                 type: "POST",
                 url: "php/manager.php",
@@ -105,15 +117,11 @@ $(document).ready(function () {
             });
         }
     });
-
-
     $(".btn-crear-author").click(function () {
 
         if ($(".form-crear-author").validate().checkForm()) {
 
             var nombre = $('.nombre').val();
-
-
             $.ajax({
                 type: "POST",
                 url: "php/saveAuthor.php",
@@ -130,15 +138,11 @@ $(document).ready(function () {
             });
         }
     });
-
-
     $(".btn-crear-editorial").click(function () {
 
         if ($(".form-crear-editorial").validate().checkForm()) {
 
             var nombre = $('.nombre').val();
-
-
             $.ajax({
                 type: "POST",
                 url: "php/saveEditorial.php",
@@ -155,12 +159,9 @@ $(document).ready(function () {
             });
         }
     });
-
     $(".guardar-materia-nueva").click(function () {
 
         var nombre = $('.materia-nueva').val();
-
-
         $.ajax({
             type: "POST",
             url: "php/saveMateria.php",
@@ -177,19 +178,15 @@ $(document).ready(function () {
                 }
             }
         });
-
     });
-
-
     $(".crear-libro").click(function () {
 
-        // if ($(".agregar-libro").validate()) {
+// if ($(".agregar-libro").validate()) {
         var materias = $('.materias').val();
         var nombre = $('.nombre').val();
         var autor = $('.autor').val();
         var editorial = $('.editorial').val();
         var descripcion = $('.descripcion').val();
-
         if (nombre.length == 0) {
             alert('Escriba un nombre')
             return false;
@@ -233,11 +230,7 @@ $(document).ready(function () {
                 }
             }
         });
-
     });
-
-
-
     $('.search-book').click(function () {
         window.location = '/biblioteca/search/' + $('.seleccione-filtro').val() + '/' + $('#searchText').val()
     })
@@ -260,10 +253,7 @@ $(document).ready(function () {
             var apellido = $('.apellido').val();
             var cotrasena = $('.contrasena').val();
             var email = $('.email').val();
-            
             var userTipo = $('.userTipo').val();
-            
-
             $.ajax({
                 type: "POST",
                 url: "php/saveUser.php",
@@ -273,7 +263,7 @@ $(document).ready(function () {
                     contrasena: cotrasena,
                     apellido: apellido,
                     email: email,
-                    userTipo:userTipo
+                    userTipo: userTipo
                 },
                 success: function (data) {
                     var result = $.parseJSON(data);
