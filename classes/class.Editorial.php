@@ -35,13 +35,26 @@ class Editorial {
     }
 
     public function updateEditorial($id, $nombre) {
-        $data = Array('nombre' => $nombre);
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
         $db->where('id', $id);
+        
+        $data = Array('nombre' => $nombre);
         if ($db->update('Editoriales', $data)){
             return array("return" => true, "mensaje" => "Editorial modificada");
         }else{
-            return array("return" => flase, "mensaje" => "update failed: ".$db->getLastError());
+            return array("return" => false, "mensaje" => "update failed: ".$db->getLastError());
+        }
+    }
+    
+    public function disableEditorial($id) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $db->where('id', $id);
+        
+        $data = Array('enabled' => 0);
+        if ($db->update('Editoriales', $data)){
+            return array("success" => true, "mensaje" => "Editorial modificada");
+        }else{
+            return array("success" => false, "mensaje" => "update failed: ".$db->getLastError());
         }
     }
 }

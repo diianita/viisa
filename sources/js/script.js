@@ -1,20 +1,41 @@
-function processLogin(){
+function processLogin() {
     var user = $('#username').val()
     var password = $('#password').val()
-    
-    $.post('/processLogin/', {username:user, password:password}, function(data){
-       // alert(data)
+
+    $.post('/processLogin/', {username: user, password: password}, function(data) {
+        // alert(data)
         var result = $.parseJSON(data);
-        if(result.success){
+        if (result.success) {
             window.location = '/dashboard/';
-        }else{
+        } else {
             alert('Usuario y/o contaseña incorrectos');
         }
     });
 }
 
-$(document).ready(function () {
-    
+function deleteEditorial(id) {
+    if (confirm("Desea eliminar la editorial, esta acción no se puede deshacer.")) {
+        $.ajax({
+            type: "POST",
+            url: "php/deleteEditorial.php",
+            async: false,
+            data: {
+                id: id
+            },
+            success: function(data) {
+                var result = $.parseJSON(data);
+                if (result.success) {
+                    window.location = init.WEBSITE_URL + 'listEditorial';
+                } else {
+                    alert('Hubo un error!');
+                }
+            }
+        });
+    }
+}
+
+$(document).ready(function() {
+
     $('#form-login').validate({
         debug: true,
         rules: {
@@ -37,8 +58,8 @@ $(document).ready(function () {
         }
     });
 
-    $("#form-login").submit(function () {
-     return false;
+    $("#form-login").submit(function() {
+        return false;
     });
 
     $('#form-create-manager').validate({
@@ -80,18 +101,18 @@ $(document).ready(function () {
             }
         }
     });
-    $("#form-create-manager").submit(function () {
+    $("#form-create-manager").submit(function() {
         return false;
     });
     /* -------------------------------------------------------------------*/
 
-    $("#btn-login").click(function () {
-        if($("#form-login").validate().checkForm()) {
+    $("#btn-login").click(function() {
+        if ($("#form-login").validate().checkForm()) {
             processLogin();
         }
     });
-    
-    $("#btn-crear-manager").click(function () {
+
+    $("#btn-crear-manager").click(function() {
         if ($("#form-create-manager").validate().checkForm()) {
             var foto = "";
             var nombre = $('#nombreManager').val();
@@ -109,15 +130,15 @@ $(document).ready(function () {
                     email: email,
                     cargo: cargo
                 },
-                success: function (data) {
+                success: function(data) {
                     var result = $.parseJSON(data);
                     console.log(result);
                 }
             });
         }
     });
-    
-    $(".btn-crear-author").click(function () {
+
+    $(".btn-crear-author").click(function() {
         if ($(".form-crear-author").validate().checkForm()) {
             var nombre = $('.nombre').val();
             $.ajax({
@@ -127,7 +148,7 @@ $(document).ready(function () {
                 data: {
                     nombre: nombre
                 },
-                success: function (data) {
+                success: function(data) {
                     var result = $.parseJSON(data);
                     if (result.return) {
                         window.location = '/autores';
@@ -136,8 +157,8 @@ $(document).ready(function () {
             });
         }
     });
-    
-    $(".btn-crear-editorial").click(function () {
+
+    $(".btn-crear-editorial").click(function() {
         if ($(".form-crear-editorial").validate().checkForm()) {
             var nombre = $('.nombre').val();
             $.ajax({
@@ -147,7 +168,7 @@ $(document).ready(function () {
                 data: {
                     nombre: nombre
                 },
-                success: function (data) {
+                success: function(data) {
                     var result = $.parseJSON(data);
                     if (result.return) {
                         window.location = '/listEditorial';
@@ -156,8 +177,8 @@ $(document).ready(function () {
             });
         }
     });
-    
-    $(".guardar-materia-nueva").click(function () {
+
+    $(".guardar-materia-nueva").click(function() {
         var nombre = $('.materia-nueva').val();
         $.ajax({
             type: "POST",
@@ -166,7 +187,7 @@ $(document).ready(function () {
             data: {
                 nombre: nombre
             },
-            success: function (data) {
+            success: function(data) {
                 var result = $.parseJSON(data);
                 if (result.return) {
                     $('#myModal').modal('hide');
@@ -176,8 +197,8 @@ $(document).ready(function () {
             }
         });
     });
-    
-    $(".crear-libro").click(function () {
+
+    $(".crear-libro").click(function() {
 // if ($(".agregar-libro").validate()) {
         var materias = $('.materias').val();
         var nombre = $('.nombre').val();
@@ -217,7 +238,7 @@ $(document).ready(function () {
                 editorial: editorial,
                 descripcion: descripcion
             },
-            success: function (data) {
+            success: function(data) {
                 var result = $.parseJSON(data);
                 if (result.return) {
                     window.location = '/listBooks';
@@ -225,21 +246,21 @@ $(document).ready(function () {
             }
         });
     });
-    $('.search-book').click(function () {
+    $('.search-book').click(function() {
         window.location = '/biblioteca/search/' + $('.seleccione-filtro').val() + '/' + $('#searchText').val()
     })
 
-    $('input[type="radio"], input[name="inlineRadioOptions"]').click(function () {
+    $('input[type="radio"], input[name="inlineRadioOptions"]').click(function() {
         $('input[type="radio"], input[name="inlineRadioOptions"]').removeAttr('checked')
         $(this).attr('checked', true)
     })
 
-    $('label').click(function () {
+    $('label').click(function() {
         $('label').find('input').removeAttr('checked')
         $(this).find('input').attr('checked', true)
     })
 
-    $(".btn-crear-user").click(function () {
+    $(".btn-crear-user").click(function() {
 
         if ($(".form-crear-user").validate().checkForm()) {
 
@@ -259,7 +280,7 @@ $(document).ready(function () {
                     email: email,
                     userTipo: userTipo
                 },
-                success: function (data) {
+                success: function(data) {
                     var result = $.parseJSON(data);
                     if (result.return) {
                         window.location = '/usuarios';

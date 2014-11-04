@@ -40,7 +40,7 @@ $Editoriales = $cl_editoriales->getEditoriales();
                                     <td><?php echo ($value['enabled'] == 1) ? 'Activo' : 'Inactivo' ?></td>
                                     <td>
                                         <a href="/editorial/edit/<?php echo $value['id']?>" class="btn btn-xs btn-primary margin-right-5px">Editar</a>
-                                        <a class="btn btn-xs btn-danger margin-right-5px">Eliminar</a>
+                                        <a class="btn btn-xs btn-danger margin-right-5px" onclick='deleteEditorial(<?php echo $value['id'] ?>)'>Eliminar</a>
                                     </td>
                                 </tr>
                             <?php } ?>
