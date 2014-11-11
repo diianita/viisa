@@ -1,6 +1,6 @@
 function processLogin() {
-    var user = $('#username').val()
-    var password = $('#password').val()
+    var user = $('#username').val();
+    var password = $('#password').val();
 
     $.post('/processLogin/', {username: user, password: password}, function(data) {
         // alert(data)
@@ -39,6 +39,27 @@ function deleteAutor(id) {
         $.ajax({
             type: "POST",
             url: "php/deleteAutor.php",
+            async: false,
+            data: {
+                id: id
+            },
+            success: function(data) {
+                var result = $.parseJSON(data);
+                if (result.success) {
+                    window.location = init.WEBSITE_URL + 'listaAutores';
+                } else {
+                    alert('Hubo un error!');
+                }
+            }
+        });
+    }
+}
+
+function deleteLibro(id) {
+    if (confirm("Desea eliminar el libro, esta acción no se puede deshacer.")) {
+        $.ajax({
+            type: "POST",
+            url: "php/deleteBook.php",
             async: false,
             data: {
                 id: id
@@ -125,6 +146,57 @@ $(document).ready(function() {
     $("#form-create-manager").submit(function() {
         return false;
     });
+    
+    $('#form-new-book, #form-edit-book').validate({
+        debug: true,
+        rules: {
+            materia: {
+                required: true
+            },
+            autor: {
+                required: true
+            },
+            editorial: {
+                required: true
+            },
+            nombre: {
+                required: true,
+                minlength: 5
+            },
+            descripcion: {
+                required: true,
+                minlength: 5
+            }
+        },
+        messages: {
+            materia: {
+                required: "Por favor seleccione un campo"
+            },
+            autor: {
+                required: "Por favor seleccione un campo"
+            },
+            editorial: {
+                required: "Por favor seleccione un campo"
+            },
+            nombre: {
+                required: "Por favor ingrese el nombre del libro",
+                minlength: "Por favor ingrese mínino 5 caracteres"
+            },
+            descripcion: {
+                required: "Por favor ingrese la descripción del libro",
+                minlength: "Por favor ingrese mínino 5 caracteres"
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+    
+    $("#form-new-book").submit(function() {
+        return false;
+    });
+    
+    
     /* -------------------------------------------------------------------*/
 
     $("#btn-login").click(function() {
@@ -212,79 +284,58 @@ $(document).ready(function() {
                 var result = $.parseJSON(data);
                 if (result.return) {
                     $('#myModal').modal('hide');
-                    $('.materias').append('<option value="' + result.id + '">' + result.nombre + '</option>')
-                    $('.materias').val(result.id)
+                    $('.materias').append('<option value="' + result.id + '">' + result.nombre + '</option>');
+                    $('.materias').val(result.id);
                 }
             }
         });
     });
 
     $(".crear-libro").click(function() {
-// if ($(".agregar-libro").validate()) {
-        var materias = $('.materias').val();
-        var nombre = $('.nombre').val();
-        var autor = $('.autor').val();
-        var editorial = $('.editorial').val();
-        var descripcion = $('.descripcion').val();
-        if (nombre.length == 0) {
-            alert('Escriba un nombre')
-            return false;
-        }
-        else if (materias == 0) {
-            alert('Seleccione una Materia')
-            return false;
-        }
-        else if (autor == 0) {
-            alert('Seleccione un Autor')
-            return false;
-        }
-        else if (editorial == 0) {
-            alert('Seleccione un Editorial')
-            return false;
-        }
-        else if (descripcion.length == 0) {
-            alert('Escriba una descripcion')
-            return false;
-        }
+        if ($("#form-new-book").validate().checkForm()) {
+            var materias = $('.materias').val();
+            var nombre = $('.nombre').val();
+            var autor = $('.autor').val();
+            var editorial = $('.editorial').val();
+            var descripcion = $('.descripcion').val();
 
-
-        $.ajax({
-            type: "POST",
-            url: "php/saveBook.php",
-            async: false,
-            data: {
-                materias: materias,
-                nombre: nombre,
-                autor: autor,
-                editorial: editorial,
-                descripcion: descripcion
-            },
-            success: function(data) {
-                var result = $.parseJSON(data);
-                if (result.return) {
-                    window.location = '/listBooks';
+            $.ajax({
+                type: "POST",
+                url: "php/saveBook.php",
+                async: false,
+                data: {
+                    materias: materias,
+                    nombre: nombre,
+                    autor: autor,
+                    editorial: editorial,
+                    descripcion: descripcion
+                },
+                success: function(data) {
+                    var result = $.parseJSON(data);
+                    if (result.return) {
+                        window.location = '/listBooks';
+                    }
                 }
-            }
-        });
+            });
+        }
     });
+    
     $('.search-book').click(function() {
-        window.location = '/biblioteca/search/' + $('.seleccione-filtro').val() + '/' + $('#searchText').val()
-    })
+        window.location = '/biblioteca/search/' + $('.seleccione-filtro').val() + '/' + $('#searchText').val();
+    });
 
     $('input[type="radio"], input[name="inlineRadioOptions"]').click(function() {
-        $('input[type="radio"], input[name="inlineRadioOptions"]').removeAttr('checked')
-        $(this).attr('checked', true)
-    })
+        $('input[type="radio"], input[name="inlineRadioOptions"]').removeAttr('checked');
+        $(this).attr('checked', true);
+    });
 
     $('label').click(function() {
-        $('label').find('input').removeAttr('checked')
-        $(this).find('input').attr('checked', true)
-    })
+        $('label').find('input').removeAttr('checked');
+        $(this).find('input').attr('checked', true);
+    });
 
     $(".btn-crear-user").click(function() {
-
         if ($(".form-crear-user").validate().checkForm()) {
-
             var nombre = $('.nombre').val();
             var apellido = $('.apellido').val();
             var cotrasena = $('.contrasena').val();

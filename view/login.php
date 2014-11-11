@@ -10,10 +10,9 @@
             <div class="col-sm-12">
                 <div class="row">
                     <div class="modal-dialog">
-                        <form class="form-horizontal" id="form-login" action="/loginProcess/" method="post">
+                        <form class="form-horizontal" id="form-login" method="post">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                   
                                     <h4 class="modal-title" id="myModalLabel">Inicio de Sesi&oacute;n</h4>
                                 </div>
                                 <div class="modal-body">
@@ -30,7 +29,6 @@
 
                                 </div> 
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default">Cancelar</button>
                                     <button type="submit" class="btn btn-primary" id="btn-login">Iniciar Sesi&oacute;n</button>
                                 </div>
                             </div>

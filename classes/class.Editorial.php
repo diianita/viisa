@@ -8,9 +8,9 @@ class Editorial {
 
     public function getEditoriales() {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
-        $autores = $db->rawQuery('SELECT * from Editoriales as a where enabled=1', null);
+        $editoriales = $db->rawQuery('SELECT * from Editoriales as a where enabled=1', null);
 
-        return $autores;
+        return $editoriales;
     }
 
     public function getEditorial($editorial_id) {

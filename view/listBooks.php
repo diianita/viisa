@@ -36,7 +36,6 @@ $cl_prestamos = new Prestamo();
             <div class="col-sm-12">
                 <div class="section-header text-center">
                     <h2>Lista De libros</h2>
-                    <h4>...</h4>
                     <a href="/newBook" class="btn btn-danger">Agregar Nuevo Libro</a>
                 </div>
             </div>
@@ -71,10 +70,16 @@ $cl_prestamos = new Prestamo();
                                     <td><?php echo $cl_prestamos->getTotalPrestamos($value['id_libro'])?></td>
                                     <td><?php echo $cl_ejemplares->getTotalEjemplares($value['id_libro']) - $cl_prestamos->getTotalPrestamos($value['id_libro'])?></td>
                                     <td>
-                                        <a class="btn btn-xs btn-warning">Ejemplares</a>
-                                        <button class="btn btn-success btn-xs" data-book="<?php echo $value['id']?>" data-title="New" data-toggle="modal" data-target="#new" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button>
-                                        <button class="btn btn-primary btn-xs" data-book="<?php echo $value['id']?>" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button>
-                                        <button class="btn btn-danger btn-xs" data-book="<?php echo $value['id']?>" data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></button>
+                                        <a title="Lista de ejemplares" class="btn btn-xs btn-warning">Ejemplares</a>
+                                        <!--<button title="Asignar " class="btn btn-success btn-xs" data-book="<?php echo $value['id']?>" data-title="New" data-toggle="modal" data-target="#new" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-plus"></span></button>-->
+                                        <!--<button title="Editar Libro"class="btn btn-primary btn-xs" data-book="<?php echo $value['id']?>" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button>-->
+                                        <!--<button class="btn btn-danger btn-xs"  data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></button>-->
+                                        <a href="/book/edit/<?php echo $value['id_libro'];?>" class="btn btn-xs btn-primary">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                        <a title="Eliminar Libro" class="btn btn-xs btn-danger" data-book="<?php echo $value['id']?>" onclick='deleteLibro(<?php echo $value['id'] ?>)'>
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -95,80 +100,4 @@ $cl_prestamos = new Prestamo();
             </div>
         </section>
     </div>
-</div>
-
-<div class="modal fade" id="new" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title custom_align" id="Heading">Nuevo Ejemplar</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Código">
-                </div>
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg">Agregar</button>
-            </div>
-        </div>
-        <!-- /.modal-content --> 
-    </div>
-    <!-- /.modal-dialog --> 
-</div>
-
-
-<div class="modal fade" id="edit" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title custom_align" id="Heading">Editar Libro</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <select class="form-control">
-                        <option>Selecciones una materia</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Nombre">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Autor">
-                </div>
-                <div class="form-group">
-                    <textarea rows="2" class="form-control" placeholder="Descripción"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-warning btn-lg">Editar</button>
-            </div>
-        </div>
-        <!-- /.modal-content --> 
-    </div>
-    <!-- /.modal-dialog --> 
-</div>
-
-
-
-<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title custom_align" id="Heading">Eliminar Libro</h4>
-            </div>
-            <div class="modal-body">
-                <div class="alert">Desea eliminar este libro?</div>
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-warning" ><span class="glyphicon glyphicon-ok-sign"></span> S&iacute;</button>
-                <button type="button" class="btn btn-warning" ><span class="glyphicon glyphicon-remove"></span> No</button>
-            </div>
-        </div>
-        <!-- /.modal-content --> 
-    </div>
-    <!-- /.modal-dialog --> 
 </div>

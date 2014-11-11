@@ -51,7 +51,7 @@ class Books {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
         $db->where("a.enabled", 1);
         $db->where("a.id", $book_id);
-        $book = $db->get("Libro as a", null, null);
+        $book = $db->getOne("Libro as a", null, null);
 
         return $book;
     }
@@ -65,6 +65,28 @@ class Books {
         } else {
             //echo "mal 2";
             return array("return" => false, "mensaje" => "Hubo un error, intentelo nuevamente.");
+        }
+    }
+    
+    public function updateBook($id, $data) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $db->where('id', $id);
+        if ($db->update('Libro', $data)){
+            return array("return" => true, "mensaje" => "Libro modificado");
+        }else{
+            return array("return" => false, "mensaje" => "update failed: ".$db->getLastError());
+        }
+    }
+    
+    public function disableAuthor($id) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $db->where('id', $id);
+        
+        $data = Array('enabled' => 0);
+        if ($db->update('Autores', $data)){
+            return array("success" => true, "mensaje" => "Editorial modificada");
+        }else{
+            return array("success" => false, "mensaje" => "update failed: ".$db->getLastError());
         }
     }
 

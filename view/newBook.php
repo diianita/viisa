@@ -16,7 +16,6 @@ Page::loadClass("Author");
 $cl_autores = new Author();
 $Autores = $cl_autores->getAutores();
 
-
 ?>
 
 <div class="content">
@@ -31,11 +30,11 @@ $Autores = $cl_autores->getAutores();
                 <div class="row">
                     <div class="col-md-6">
                         <div class="well">
-                            <form class="form-horizontal agregar-libro" role="form" onsubmit="return false">
+                            <form class="form-horizontal" role="form" id="form-new-book">
                                 <div class="form-group">
                                     <div class="col-sm-offset-1 col-sm-10">
-                                        <select class="form-control pull-left margin-right-5px materias" style="width: 250px">
-                                            <option value="0">Seleccionar una materia</option>
+                                        <select class="form-control pull-left margin-right-5px materias" name="materia" id="materia" style="width: 250px">
+                                            <option value="">Seleccionar una materia</option>
                                             <?php
                                             foreach ($Materias as $key => $value) {
                                                 ?>
@@ -50,14 +49,14 @@ $Autores = $cl_autores->getAutores();
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-1 col-sm-10">
-                                        <input class="form-control nombre" type="text" placeholder="Nombre">
+                                        <input class="form-control nombre" type="text" placeholder="Nombre" name="nombre" id="nombre">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-1 col-sm-10">
                                        
-                                        <select class="form-control pull-left margin-right-5px autor">
-                                            <option value="0">Seleccione un Autor</option>
+                                        <select class="form-control pull-left margin-right-5px autor" name="autor" id="autor">
+                                            <option value="">Seleccione un Autor</option>
                                             <?php
                                             foreach ($Autores as $key => $value) {
                                                 ?>
@@ -71,8 +70,8 @@ $Autores = $cl_autores->getAutores();
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-1 col-sm-10">
-                                         <select class="form-control pull-left margin-right-5px editorial">
-                                            <option value="0">Seleccione un Editorial</option>
+                                        <select class="form-control pull-left margin-right-5px editorial" name="editorial" id="editorial">
+                                            <option value="">Seleccione una Editorial</option>
                                             <?php
                                             foreach ($Editorial as $key => $value) {
                                                 ?>
@@ -86,7 +85,7 @@ $Autores = $cl_autores->getAutores();
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-1 col-sm-10">
-                                        <textarea rows="2" class="form-control descripcion" placeholder="Descripción"></textarea>
+                                        <textarea rows="2" class="form-control descripcion" placeholder="Descripción" name="descripcion" id="descripcion"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">

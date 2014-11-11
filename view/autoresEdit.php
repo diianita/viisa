@@ -39,8 +39,7 @@ if ($error_count == 0 && trim($form)) {
                     <div class="row">
                         <div class="col-md-6">
                             <div class="well">
-                                <form class="form-horizontal form-crear-author" role="form" id="form-crear-author" action="<?php echo Page::getUrl() ?>autores/edit/<?php echo $author_id ?>" method="POST">
-
+                                <form class="form-horizontal" role="form" id="form-crear-author" action="<?php echo Page::getUrl() ?>autores/edit/<?php echo $author_id ?>" method="POST">
                                     <div class="form-group" style="margin-top: 20px">
                                         <div class="col-sm-offset-1 col-sm-10">
                                             <input class="form-control nombre" type="text" name="nombre" value="<?php echo $author["nombre"] ?>">
