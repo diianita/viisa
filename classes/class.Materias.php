@@ -17,7 +17,7 @@ class Materias {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
         $db->where("a.enabled", 1);
         $db->where("a.id", $materia_id);
-        $materia = $db->get("Materias as a", null, null);
+        $materia = $db->getOne("Materias as a", null, null);
 
         return $materia;
     }

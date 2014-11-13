@@ -55,6 +55,15 @@ class Books {
 
         return $book;
     }
+    
+    public function getBookEj($book_id) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $db->where("e.enabled", 1);
+        $db->where("e.libro", $book_id);
+        $book = $db->get("Ejemplares as e", null, null);
+
+        return $book;
+    }
 
     public function createBook($book) {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
