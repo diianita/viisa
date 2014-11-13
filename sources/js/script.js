@@ -27,7 +27,7 @@ function deleteEditorial(id) {
                 if (result.success) {
                     window.location = init.WEBSITE_URL + 'listEditorial';
                 } else {
-                    alert('Hubo un error!');
+                    alert('Hubo un error, ' + result.mensaje);
                 }
             }
         });
@@ -48,7 +48,7 @@ function deleteAutor(id) {
                 if (result.success) {
                     window.location = init.WEBSITE_URL + 'listaAutores';
                 } else {
-                    alert('Hubo un error!');
+                    alert('Hubo un error, ' + result.mensaje);
                 }
             }
         });
@@ -67,9 +67,9 @@ function deleteLibro(id) {
             success: function(data) {
                 var result = $.parseJSON(data);
                 if (result.success) {
-                    window.location = init.WEBSITE_URL + 'listaAutores';
+                    window.location = init.WEBSITE_URL + 'listBooks';
                 } else {
-                    alert('Hubo un error!');
+                    alert('Hubo un error, ' + result.mensaje);
                 }
             }
         });

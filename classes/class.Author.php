@@ -33,31 +33,35 @@ class Author {
             return array("return" => false, "mensaje" => "Hubo un error, intentelo nuevamente.");
         }
     }
-    
+
     public function updateAuthor($id, $nombre) {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
         $db->where('id', $id);
-        
+
         $data = Array('nombre' => $nombre);
-        if ($db->update('Autores', $data)){
+        if ($db->update('Autores', $data)) {
             return array("return" => true, "mensaje" => "Autor modificada");
-        }else{
-            return array("return" => false, "mensaje" => "update failed: ".$db->getLastError());
-        }
-    }
-    
-    public function disableAuthor($id) {
-        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
-        $db->where('id', $id);
-        
-        $data = Array('enabled' => 0);
-        if ($db->update('Autores', $data)){
-            return array("success" => true, "mensaje" => "Editorial modificada");
-        }else{
-            return array("success" => false, "mensaje" => "update failed: ".$db->getLastError());
+        } else {
+            return array("return" => false, "mensaje" => "update failed: " . $db->getLastError());
         }
     }
 
+    public function disableAuthor($id) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+
+        $prestamos = $db->rawQuery('SELECT count(*) from Libro as l, Prestamo as p where l.autor=' . $id . ' and l.id = p.libro', null);
+        if ($prestamos[0]['count(*)'] == 0) {
+            $db->where('id', $id);
+            $data = Array('enabled' => 0);
+            if ($db->update('Autores', $data)) {
+                return array("success" => true, "mensaje" => "autor modificada");
+            } else {
+                return array("success" => false, "mensaje" => "error en la base de datos");
+            }
+        } else {
+            return array("success" => false, "mensaje" => "existen libros en prestamo");
+        }
+    }
 }
 
 ?>

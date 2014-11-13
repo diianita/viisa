@@ -48,14 +48,23 @@ class Editorial {
     
     public function disableEditorial($id) {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
-        $db->where('id', $id);
-        
-        $data = Array('enabled' => 0);
-        if ($db->update('Editoriales', $data)){
-            return array("success" => true, "mensaje" => "Editorial modificada");
-        }else{
-            return array("success" => false, "mensaje" => "update failed: ".$db->getLastError());
+
+        $prestamos = $db->rawQuery('SELECT count(*) from Libro as l, Prestamo as p where l.editorial=' . $id . ' and l.id = p.libro', null);
+        if ($prestamos[0]['count(*)'] == 0) {
+            $db->where('id', $id);        
+            $data = Array('enabled' => 0);
+            if ($db->update('Editoriales', $data)){
+                return array("success" => true, "mensaje" => "Editorial modificada");
+            }else{
+                return array("success" => false, "mensaje" => "error en la base de datos");
+            }
+        } else {
+            return array("success" => false, "mensaje" => "existen libros en prestamo");
         }
+        
+        
+        
+        
     }
 }
 ?>

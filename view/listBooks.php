@@ -60,24 +60,24 @@ $cl_prestamos = new Prestamo();
                                 ?>
 
                                 <tr>
-                                    <td><?php echo $value['id_libro']?></td>
-                                    <td><?php echo $value['nombre_materia'] ?></td>
-                                    <td><?php echo $value['nombre'] ?></td>
-                                    <td><?php echo $value['nombre_autor'] ?></td>
-                                    <td><?php echo $value['descripcion_libro']?></td>
-                                    <td><?php echo $value['editorial_nombre']?></td>
-                                    <td><?php echo $cl_ejemplares->getTotalEjemplares($value['id_libro'])?></td>
-                                    <td><?php echo $cl_prestamos->getTotalPrestamos($value['id_libro'])?></td>
-                                    <td><?php echo $cl_ejemplares->getTotalEjemplares($value['id_libro']) - $cl_prestamos->getTotalPrestamos($value['id_libro'])?></td>
+                                    <td><?php echo $value['libro_id']?></td>
+                                    <td><?php echo $value['libro_materia'] ?></td>
+                                    <td><?php echo $value['libro_nombre'] ?></td>
+                                    <td><?php echo $value['libro_autor'] ?></td>
+                                    <td><?php echo $value['libro_dec']?></td>
+                                    <td><?php echo $value['libro_editorial']?></td>
+                                    <td><?php echo $cl_ejemplares->getTotalEjemplares($value['libro_id'])?></td>
+                                    <td><?php echo $cl_prestamos->getTotalPrestamos($value['libro_id'])?></td>
+                                    <td><?php echo $cl_ejemplares->getTotalEjemplares($value['libro_id']) - $cl_prestamos->getTotalPrestamos($value['libro_id'])?></td>
                                     <td>
                                         <a title="Lista de ejemplares" class="btn btn-xs btn-warning">Ejemplares</a>
                                         <!--<button title="Asignar " class="btn btn-success btn-xs" data-book="<?php echo $value['id']?>" data-title="New" data-toggle="modal" data-target="#new" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-plus"></span></button>-->
                                         <!--<button title="Editar Libro"class="btn btn-primary btn-xs" data-book="<?php echo $value['id']?>" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button>-->
                                         <!--<button class="btn btn-danger btn-xs"  data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></button>-->
-                                        <a href="/book/edit/<?php echo $value['id_libro'];?>" class="btn btn-xs btn-primary">
+                                        <a href="/book/edit/<?php echo $value['libro_id'];?>" class="btn btn-xs btn-primary">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </a>
-                                        <a title="Eliminar Libro" class="btn btn-xs btn-danger" data-book="<?php echo $value['id']?>" onclick='deleteLibro(<?php echo $value['id'] ?>)'>
+                                        <a title="Eliminar Libro" class="btn btn-xs btn-danger" data-book="<?php echo $value['libro_id']?>" onclick='deleteLibro(<?php echo $value['libro_id'] ?>)'>
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </a>
                                     </td>

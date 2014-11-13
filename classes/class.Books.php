@@ -40,7 +40,7 @@ class Books {
                 $autores = $db->rawQuery('SELECT *, a.id as id_libro, ed.nombre as editorial_nombre, a.descripcion as descripcion_libro, a.nombre as nombre_libro, m.nombre as nombre_materia, au.nombre as nombre_autor from Libro as a, Autores as au, Materias as m, Ejemplares as e,  Editoriales as ed where ed.id = a.editorial  and e.libro = a.id and m.id = a.materia and au.id = a.autor and a.enabled=1 and nombre like "%' . $query . '%" order by id_libro', null);
             }
         } else {
-            $autores = $db->rawQuery('SELECT *, a.id as id_libro, ed.nombre as editorial_nombre, a.descripcion as descripcion_libro, a.nombre as nombre_libro, m.nombre as nombre_materia, au.nombre as nombre_autor from Libro as a, Autores as au, Materias as m, Ejemplares as e, Editoriales as ed where ed.id = a.editorial  and e.libro = a.id and m.id = a.materia and au.id = a.autor and a.enabled=1 order by id_libro', null);
+            $autores = $db->rawQuery('SELECT l.id as libro_id, l.nombre as libro_nombre, l.descripcion as libro_dec, ed.nombre as libro_editorial, m.nombre as libro_materia, au.nombre as libro_autor from Libro as l, Autores as au, Materias as m, Editoriales as ed where ed.id = l.editorial  and m.id = l.materia and au.id = l.autor and l.enabled=1 order by libro_id', null);
         }
 
 
@@ -78,15 +78,20 @@ class Books {
         }
     }
     
-    public function disableAuthor($id) {
+    public function disableBook($id) {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
-        $db->where('id', $id);
         
-        $data = Array('enabled' => 0);
-        if ($db->update('Autores', $data)){
-            return array("success" => true, "mensaje" => "Editorial modificada");
-        }else{
-            return array("success" => false, "mensaje" => "update failed: ".$db->getLastError());
+        $prestamos = $db->rawQuery('SELECT count(*) from Libro as l, Prestamo as p where l.id=' . $id . ' and l.id = p.libro', null);
+        if ($prestamos[0]['count(*)'] == 0) {
+            $db->where('id', $id);        
+            $data = Array('enabled' => 0);
+            if ($db->update('Libro', $data)){
+                return array("success" => true, "mensaje" => "libro modificado");
+            }else{
+                return array("success" => false, "mensaje" => "error en la base de datos");
+            }
+        } else {
+            return array("success" => false, "mensaje" => "existen libros en prestamo");
         }
     }
 
