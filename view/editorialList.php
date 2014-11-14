@@ -17,7 +17,7 @@ $Editoriales = $cl_editoriales->getEditoriales();
             <div class="col-sm-12">
                 <div class="section-header text-center">
                     <legend><h2>Lista de Editoriales</h2></legend>
-                    <a href="/newEditorial" class="btn btn-danger">Agregar Nuevo Editorial</a>
+                    <a href="/editorial/new" class="btn btn-danger">Agregar Nuevo Editorial</a>
                 </div>
             </div>
             <div class="col-sm-12" style="padding-top: 50px">
@@ -39,8 +39,12 @@ $Editoriales = $cl_editoriales->getEditoriales();
                                     <td><?php echo $value['nombre'] ?></td>
                                     <td><?php echo ($value['enabled'] == 1) ? 'Activo' : 'Inactivo' ?></td>
                                     <td>
-                                        <a href="/editorial/edit/<?php echo $value['id']?>" class="btn btn-xs btn-primary margin-right-5px">Editar</a>
-                                        <a class="btn btn-xs btn-danger margin-right-5px" onclick='deleteEditorial(<?php echo $value['id'] ?>)'>Eliminar</a>
+                                        <a href="/editorial/edit/<?php echo $value['id']?>" class="btn btn-xs btn-primary margin-right-5px">
+                                            <span class="glyphicon glyphicon-pencil">
+                                        </a>
+                                        <a class="btn btn-xs btn-danger margin-right-5px" onclick='deleteEditorial(<?php echo $value['id'] ?>)'>
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php } ?>

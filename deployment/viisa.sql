@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS `viisa`.`TipoUsuario` ;
 CREATE  TABLE IF NOT EXISTS `viisa`.`TipoUsuario` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `desc` TEXT NULL ,
-  `Enable` INT NULL DEFAULT 1 ,
+  `enabled` INT NULL DEFAULT 1 ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = big5
@@ -175,12 +175,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `viisa`;
-INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`, `Enable`) VALUES (1, 'directivo', 1);
-INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`, `Enable`) VALUES (2, 'docente', 1);
-INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`, `Enable`) VALUES (3, 'bibliotecario', 1);
-INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`, `Enable`) VALUES (4, 'estudiente', 1);
-INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`, `Enable`) VALUES (5, 'familiar', 1);
-INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`, `Enable`) VALUES (6, 'administrador', 1);
+INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`, `enabled`) VALUES (1, 'directivo', 1);
+INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`, `enabled`) VALUES (2, 'docente', 1);
+INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`, `enabled`) VALUES (3, 'bibliotecario', 1);
+INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`, `enabled`) VALUES (4, 'estudiente', 1);
+INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`, `enabled`) VALUES (5, 'familiar', 1);
+INSERT INTO `viisa`.`TipoUsuario` (`id`, `desc`, `enabled`) VALUES (6, 'administrador', 1);
 
 COMMIT;
 

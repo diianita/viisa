@@ -9,19 +9,19 @@ switch ($user_type) {
                         <div class="section-header text-center dashboard">
                             <h2>Dashboard</h2>
                             <div class="margin-top-5px">
-                                <a class="btn btn-info btn-lg" href="/listBooks/">
+                                <a class="btn btn-info btn-lg" href="/book/list">
                                     <i class="glyphicon glyphicon-book"></i>
                                     <br />
                                     <h3>Inventario</h3>
                                 </a>
 
-                                <a class="btn btn-info btn-lg" href="/listEditorial/">
+                                <a class="btn btn-info btn-lg" href="/editorial/list">
                                     <i class="glyphicon glyphicon-tasks"></i>
                                     <br />
                                     <h3>Editoriales</h3>
                                 </a>
 
-                                <a class="btn btn-info btn-lg" href="/listaAutores/">
+                                <a class="btn btn-info btn-lg" href="/author/list">
                                     <i class="glyphicon glyphicon-font"></i>
                                     <br />
                                     <h3>Autores</h3>
@@ -49,7 +49,7 @@ switch ($user_type) {
                                     <br />
                                     <h3>Informaci&oacute;n</h3>
                                 </a>
-                                <a class="btn btn-info btn-lg" href="/usuarios/">
+                                <a class="btn btn-info btn-lg" href="/user/list/">
                                     <i class="glyphicon glyphicon-user"></i>
                                     <br />
                                     <h3>Usuarios</h3>

@@ -1,5 +1,4 @@
 <?php
-
 include 'headerBiblioteca.php';
 Page::loadClass("TipoUsuario");
 $cl_TipoUsuarios = new TipoUsuario();
@@ -34,7 +33,7 @@ $TipoUsuarios = $cl_TipoUsuarios->getTipoUsuarios();
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-1 col-sm-10">
-                                        <input class="form-control contrasena" type="password" placeholder="Contrase;a" name="cotrasena">
+                                        <input class="form-control contrasena" type="password" placeholder="Contraseña" name="cotrasena">
                                     </div>
                                 </div>
 

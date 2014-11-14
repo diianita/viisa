@@ -25,12 +25,12 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Libros <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="/listBooks">Lista</a></li>
-                                    <li><a href="/biblioteca">Buscar</a></li>
+                                    <li><a href="/book/list">Lista</a></li>
+                                    <li><a href="/findBook">Buscar</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/listaAutores">Autores</a></li>
-                            <li><a href="/listEditorial">Editoriales</a></li>
+                            <li><a href="/author/list">Autores</a></li>
+                            <li><a href="/editorial/list">Editoriales</a></li>
                             <li><a href="/logout">Cerrar Sesi&oacute;n!</a></li>                           
                         </ul>
                     </div>

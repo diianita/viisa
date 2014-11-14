@@ -18,9 +18,6 @@ if($function == 'biblioteca' || $function == 'usuarios' || $function == 'editori
     </div>
 
 </div>
-
-
-
 <?php
 }
 ?>

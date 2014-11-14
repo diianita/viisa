@@ -33,7 +33,7 @@ $cl_prestamos = new Prestamo();
             <div class="col-sm-12">
                 <div class="section-header text-center">
                     <h2>Lista De libros</h2>
-                    <a href="/newBook" class="btn btn-danger">Agregar Nuevo Libro</a>
+                    <a href="/book/new" class="btn btn-danger">Agregar Nuevo Libro</a>
                 </div>
             </div>
             <div class="col-md-12">

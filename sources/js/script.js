@@ -25,7 +25,7 @@ function deleteEditorial(id) {
             success: function(data) {
                 var result = $.parseJSON(data);
                 if (result.success) {
-                    window.location = init.WEBSITE_URL + 'listEditorial';
+                    window.location = init.WEBSITE_URL + 'editorial/list';
                 } else {
                     alert('Hubo un error, ' + result.mensaje);
                 }
@@ -46,7 +46,7 @@ function deleteAutor(id) {
             success: function(data) {
                 var result = $.parseJSON(data);
                 if (result.success) {
-                    window.location = init.WEBSITE_URL + 'listaAutores';
+                    window.location = init.WEBSITE_URL + 'author/list';
                 } else {
                     alert('Hubo un error, ' + result.mensaje);
                 }
@@ -67,7 +67,7 @@ function deleteLibro(id) {
             success: function(data) {
                 var result = $.parseJSON(data);
                 if (result.success) {
-                    window.location = init.WEBSITE_URL + 'listBooks';
+                    window.location = init.WEBSITE_URL + 'book/list';
                 } else {
                     alert('Hubo un error, ' + result.mensaje);
                 }
@@ -284,7 +284,7 @@ $(document).ready(function() {
                 success: function(data) {
                     var result = $.parseJSON(data);
                     if (result.return) {
-                        window.location = '/autores';
+                        window.location = '/author/list';
                     }
                 }
             });
@@ -304,7 +304,7 @@ $(document).ready(function() {
                 success: function(data) {
                     var result = $.parseJSON(data);
                     if (result.return) {
-                        window.location = '/listEditorial';
+                        window.location = '/editorial/list';
                     }
                 }
             });
@@ -353,7 +353,7 @@ $(document).ready(function() {
                 success: function(data) {
                     var result = $.parseJSON(data);
                     if (result.return) {
-                        window.location = '/listBooks';
+                        window.location = '/book/list';
                     }
                 }
             });
@@ -395,7 +395,7 @@ $(document).ready(function() {
                 success: function(data) {
                     var result = $.parseJSON(data);
                     if (result.return) {
-                        window.location = '/usuarios';
+                        window.location = '/user/list';
                     }
                 }
             });

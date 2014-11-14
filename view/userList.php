@@ -25,7 +25,7 @@ $Usuarios = $cl_usuarios->getUsuarios();
             <div class="col-sm-12">
                 <div class="section-header text-center">
                     <legend><h2>Lista de Usuarios del Sistema</h2></legend>
-                    <a href="/newUser" class="btn btn-danger">Agregar Nuevo Usuario</a>
+                    <a href="/user/new" class="btn btn-danger">Agregar Nuevo Usuario</a>
                 </div>
             </div>
             <div class="col-sm-12" style="padding-top: 50px">
@@ -54,8 +54,12 @@ $Usuarios = $cl_usuarios->getUsuarios();
                                     
                                     <td><?php echo ($value['enabled'] == 1)?'Activo':'Inactivo'?></td>
                                     <td>
-                                        <a class="btn btn-xs btn-primary margin-right-5px">Editar</a>
-                                        <a class="btn btn-xs btn-danger margin-right-5px">Eliminar</a>
+                                        <a href="/user/edit/<?php echo $value['id']?>" class="btn btn-xs btn-primary margin-right-5px">
+                                            <span class="glyphicon glyphicon-pencil">
+                                        </a>
+                                        <a class="btn btn-xs btn-danger margin-right-5px">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php } ?>

@@ -41,7 +41,7 @@ if (!isset($_REQUEST['btn-book-edit'])) {
 }
 
 if ($error_count == 0 && trim($form)) {
-    @header("location: " . Page::getUrl() . "listBooks");
+    @header("location: " . Page::getUrl() . "book/list");
 } else {
     ?>
     <div class="content">

@@ -24,7 +24,7 @@ if (!isset($_REQUEST['btn-edit-edotirial'])) {
 }
 
 if ($error_count == 0 && trim($form)) {
-    @header("location: ".Page::getUrl()."listEditorial");
+    @header("location: ".Page::getUrl()."editorial/list");
 } else {
     ?>
     <div class="content">
