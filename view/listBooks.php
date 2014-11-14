@@ -25,9 +25,6 @@ $cl_ejemplares = new Ejemplar();
 
 Page::loadClass("Prestamo");
 $cl_prestamos = new Prestamo();
-
-
-//var_dump($Autores);
 ?>
 
 <div class="content">
@@ -56,7 +53,8 @@ $cl_prestamos = new Prestamo();
                         </thead>
                         <tbody>
                             <?php foreach ($Books as $key => $value) { 
-                                //var_dump($value);
+                                $ejemplares_total = $cl_ejemplares->getTotalEjemplares($value['libro_id']);
+                                $ejemplares_prestamo = $cl_prestamos->getTotalPrestamos($value['libro_id']);
                                 ?>
 
                                 <tr>
@@ -66,14 +64,11 @@ $cl_prestamos = new Prestamo();
                                     <td><?php echo $value['libro_autor'] ?></td>
                                     <td><?php echo $value['libro_dec']?></td>
                                     <td><?php echo $value['libro_editorial']?></td>
-                                    <td><?php echo $cl_ejemplares->getTotalEjemplares($value['libro_id'])?></td>
-                                    <td><?php echo $cl_prestamos->getTotalPrestamos($value['libro_id'])?></td>
-                                    <td><?php echo $cl_ejemplares->getTotalEjemplares($value['libro_id']) - $cl_prestamos->getTotalPrestamos($value['libro_id'])?></td>
+                                    <td><?php echo $ejemplares_total ?></td>
+                                    <td><?php echo $ejemplares_prestamo ?></td>
+                                    <td><?php echo $ejemplares_total - $ejemplares_prestamo?></td>
                                     <td>
-                                        <a title="Lista de ejemplares" class="btn btn-xs btn-warning">Ejemplares</a>
-                                        <!--<button title="Asignar " class="btn btn-success btn-xs" data-book="<?php echo $value['id']?>" data-title="New" data-toggle="modal" data-target="#new" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-plus"></span></button>-->
-                                        <!--<button title="Editar Libro"class="btn btn-primary btn-xs" data-book="<?php echo $value['id']?>" data-title="Edit" data-toggle="modal" data-target="#edit" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-pencil"></span></button>-->
-                                        <!--<button class="btn btn-danger btn-xs"  data-title="Delete" data-toggle="modal" data-target="#delete" data-placement="top" rel="tooltip"><span class="glyphicon glyphicon-trash"></span></button>-->
+                                        <a href="/book/detail/<?php echo $value['libro_id'];?>" title="Lista de ejemplares" class="btn btn-xs btn-warning">Ejemplares</a>
                                         <a href="/book/edit/<?php echo $value['libro_id'];?>" class="btn btn-xs btn-primary">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </a>

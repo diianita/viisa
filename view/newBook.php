@@ -119,7 +119,7 @@ $Autores = $cl_autores->getAutores();
                 Nombre: <input class="form-control materia-nueva" type="text" placeholder="Nombre Materia" name="materia-nueva">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary guardar-materia-nueva">Guardar</button>
             </div>
         </div>

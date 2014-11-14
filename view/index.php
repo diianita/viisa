@@ -73,7 +73,7 @@
                     <h2>Quienes somos</h2>
                 </div>
             </div>
-            <div class="col-md-5 col-sm-12">
+            <div class="col-md-12 col-sm-12"> <!-- class="col-md-5 col-sm-12" -->
                 <p style="text-align: justify;">Para ampliar la cobertura educativa del municipio de Piedecuesta se funda en 1943 el Colegio al que se 
                     le denominó BALBINO GARCÍA en honor al ilustre educador Piedecuestano. El colegio se abre en 1944 
                     con los cursos 4° y 5° de primaria y 1° de Bachillerato. En 1953 por disposición gubernamental el colegio 
@@ -87,14 +87,14 @@
                     Centro de Comercio y en 1971 recupera su sede actual.</p>
                 <blockquote>Directivos</blockquote>
             </div>
-            <div class="col-md-7 col-sm-12">
+            <!--<div class="col-md-7 col-sm-12">
                 <div class="flexslider">
                     <ul class="slides">
                         <li><img src="sources/images/demo/slide-01.jpg" alt="Slide Image"/></li>
                         <li><img src="sources/images/demo/slide-02.jpg" alt="Slide Image 2"/></li>
                     </ul>
                 </div>
-            </div>
+            </div>-->
         </section>
         <!--==========-->
         <!--===============================-->

@@ -17,7 +17,7 @@ function deleteEditorial(id) {
     if (confirm("Desea eliminar la editorial, esta acción no se puede deshacer.")) {
         $.ajax({
             type: "POST",
-            url: "php/deleteEditorial.php",
+            url: init.WEBSITE_URL + "php/deleteEditorial.php",
             async: false,
             data: {
                 id: id
@@ -38,7 +38,7 @@ function deleteAutor(id) {
     if (confirm("Desea eliminar el autor, esta acción no se puede deshacer.")) {
         $.ajax({
             type: "POST",
-            url: "php/deleteAutor.php",
+            url: init.WEBSITE_URL + "php/deleteAutor.php",
             async: false,
             data: {
                 id: id
@@ -59,7 +59,7 @@ function deleteLibro(id) {
     if (confirm("Desea eliminar el libro, esta acción no se puede deshacer.")) {
         $.ajax({
             type: "POST",
-            url: "php/deleteBook.php",
+            url: init.WEBSITE_URL + "php/deleteBook.php",
             async: false,
             data: {
                 id: id
@@ -70,6 +70,27 @@ function deleteLibro(id) {
                     window.location = init.WEBSITE_URL + 'listBooks';
                 } else {
                     alert('Hubo un error, ' + result.mensaje);
+                }
+            }
+        });
+    }
+}
+
+function deleteEjemplar(id) {
+    if (confirm("Desea eliminar el ejemplar, esta acción no se puede deshacer.")) {
+        $.ajax({
+            type: "POST",
+            url: init.WEBSITE_URL + "php/deleteEjemplar.php",
+            async: false,
+            data: {
+                id: id
+            },
+            success: function(data) {
+                var result = $.parseJSON(data);
+                if (result.success) {
+                    location.reload(true);
+                } else {
+                    alert(result.mensaje);
                 }
             }
         });
@@ -196,6 +217,25 @@ $(document).ready(function() {
         return false;
     });
     
+    $('#form-new-ej').validate({
+        debug: true,
+        rules: {
+            codigo: {
+                required: true,
+                minlength: 5
+            }
+        },
+        messages: {
+            codigo: {
+                required: "Por favor ingrese el código del ejemplar",
+                minlength: "Por favor ingrese mínino 5 caracteres"
+            }
+        }
+    });
+    
+    $("#form-new-ej").submit(function() {
+        return false;
+    });
     
     /* -------------------------------------------------------------------*/
 
@@ -214,7 +254,7 @@ $(document).ready(function() {
             var cargo = $('#cargoManager').val();
             $.ajax({
                 type: "POST",
-                url: "php/manager.php",
+                url: init.WEBSITE_URL + "php/manager.php",
                 async: false,
                 data: {
                     foto: foto,
@@ -236,7 +276,7 @@ $(document).ready(function() {
             var nombre = $('.nombre').val();
             $.ajax({
                 type: "POST",
-                url: "php/saveAuthor.php",
+                url: init.WEBSITE_URL + "php/saveAuthor.php",
                 async: false,
                 data: {
                     nombre: nombre
@@ -256,7 +296,7 @@ $(document).ready(function() {
             var nombre = $('.nombre').val();
             $.ajax({
                 type: "POST",
-                url: "php/saveEditorial.php",
+                url: init.WEBSITE_URL + "php/saveEditorial.php",
                 async: false,
                 data: {
                     nombre: nombre
@@ -275,7 +315,7 @@ $(document).ready(function() {
         var nombre = $('.materia-nueva').val();
         $.ajax({
             type: "POST",
-            url: "php/saveMateria.php",
+            url: init.WEBSITE_URL + "php/saveMateria.php",
             async: false,
             data: {
                 nombre: nombre
@@ -301,7 +341,7 @@ $(document).ready(function() {
 
             $.ajax({
                 type: "POST",
-                url: "php/saveBook.php",
+                url: init.WEBSITE_URL + "php/saveBook.php",
                 async: false,
                 data: {
                     materias: materias,
@@ -343,7 +383,7 @@ $(document).ready(function() {
             var userTipo = $('.userTipo').val();
             $.ajax({
                 type: "POST",
-                url: "php/saveUser.php",
+                url: init.WEBSITE_URL + "php/saveUser.php",
                 async: false,
                 data: {
                     nombre: nombre,
@@ -356,6 +396,41 @@ $(document).ready(function() {
                     var result = $.parseJSON(data);
                     if (result.return) {
                         window.location = '/usuarios';
+                    }
+                }
+            });
+        }
+    });
+    
+    $(".btn-modal-new-ej").click(function() {
+        var book = $(this).attr('data-book');
+        $('.guardar-ejemplar').attr('data-book', book);
+        $('#modalEjemplar').modal('show');
+        
+    });
+    
+    $(".guardar-ejemplar").click(function() {
+        if ($("#form-new-ej").validate().checkForm()) {
+            var book = $(this).attr('data-book');
+            var codigo = $('#codigo').val();
+            var descripcion = $('#descripcion').val();
+            
+            $.ajax({
+                type: "POST",
+                url: init.WEBSITE_URL + "php/saveEjemplar.php",
+                async: false,
+                data: {
+                    book: book,
+                    codigo: codigo,
+                    descripcion: descripcion
+                },
+                success: function(data) {
+                    var result = $.parseJSON(data);
+                    console.log(data);
+                    if (result.return) {
+                        location.reload(true);
+                    }else{
+                        alert(result.mensaje);                        
                     }
                 }
             });

@@ -15,7 +15,7 @@ class Prestamo {
     
     public function getTotalPrestamos($book_id) {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
-        $autores = $db->rawQuery('SELECT count(*) as total from Prestamo as a where enabled=1 and libro='.$book_id.' ', null);
+        $autores = $db->rawQuery('SELECT count(*) as total from Prestamo as p, Ejemplares as e where e.enabled=1 and e.libro = '.$book_id.' and e.id = p.ejemplar and p.enabled=1', null);
 
         return $autores[0]['total'];
     }

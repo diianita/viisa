@@ -49,7 +49,7 @@ class Author {
     public function disableAuthor($id) {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
 
-        $prestamos = $db->rawQuery('SELECT count(*) from Libro as l, Prestamo as p where l.autor=' . $id . ' and l.id = p.libro', null);
+        $prestamos = $db->rawQuery('SELECT count(*) from Libro as l, Ejemplares as e, Prestamo as p where l.autor=' . $id . ' and l.id = e.libro and e.id = p.ejemplar', null);
         if ($prestamos[0]['count(*)'] == 0) {
             $db->where('id', $id);
             $data = Array('enabled' => 0);

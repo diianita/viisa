@@ -36,11 +36,26 @@ class Ejemplar {
         if ($idEjemplar) {
             return array("return" => true, "mensaje" => "Ejemplar creado!");
         } else {
-            //echo "mal 2";
             return array("return" => false, "mensaje" => "Hubo un error, intentelo nuevamente.");
         }
     }
+    
+    public function disableEjemplar($id) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $prestamos = $db->rawQuery('SELECT count(*) from Prestamo as p where p.ejemplar = '.$id.'', null);
 
+        if ($prestamos[0]['count(*)'] == 0) {
+            $db->where('id', $id);        
+            $data = Array('enabled' => 0);
+            if ($db->update('Ejemplares', $data)){
+                return array("success" => true, "mensaje" => "Ejemplar modificado");
+            }else{
+                return array("success" => false, "mensaje" => "error en la base de datos");
+            }
+        } else {
+            return array("success" => false, "mensaje" => "Hubo un error, el ejemplar está en prestamo");
+        }
+    }
 }
 
 ?>
