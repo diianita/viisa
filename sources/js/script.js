@@ -97,6 +97,28 @@ function deleteEjemplar(id) {
     }
 }
 
+function deleteUsuario(id) {
+    if (confirm("Desea eliminar el usuario, esta acción no se puede deshacer.")) {
+        $.ajax({
+            type: "POST",
+            url: init.WEBSITE_URL + "php/deleteUsuario.php",
+            async: false,
+            data: {
+                id: id
+            },
+            success: function(data) {
+                var result = $.parseJSON(data);
+                console.log(result);
+                if (result.success) {
+                    location.reload(true);
+                } else {
+                    alert(result.mensaje);
+                }
+            }
+        });
+    }
+}
+
 $(document).ready(function() {
 
     $('#form-login').validate({
@@ -122,6 +144,43 @@ $(document).ready(function() {
     });
 
     $("#form-login").submit(function() {
+        return false;
+    });
+
+    $('#form-update-quienes, #form-update-quienes, #form-update-vision').validate({
+        debug: true,
+        rules: {
+            quienes: {
+                required: true,
+                minlength: 5
+            },
+            mision: {
+                required: true,
+                minlength: 5
+            },
+            vision: {
+                required: true,
+                minlength: 5
+            }
+        },
+        messages: {
+            quienes: {
+                required: "Campo requerido",
+                minlength: "Escriba minimo 5 carácteres"
+            },
+            mision: {
+                required: "Campo requerido",
+                minlength: "Escriba minimo 5 carácteres"
+            }
+            ,
+            vision: {
+                required: "Campo requerido",
+                minlength: "Escriba minimo 5 carácteres"
+            }
+        }
+    });
+
+    $("#form-update-quienes, #form-update-quienes, #form-update-vision").submit(function() {
         return false;
     });
 
@@ -167,7 +226,7 @@ $(document).ready(function() {
     $("#form-create-manager").submit(function() {
         return false;
     });
-    
+
     $('#form-new-book, #form-edit-book').validate({
         debug: true,
         rules: {
@@ -212,11 +271,11 @@ $(document).ready(function() {
             form.submit();
         }
     });
-    
+
     $("#form-new-book").submit(function() {
         return false;
     });
-    
+
     $('#form-new-ej').validate({
         debug: true,
         rules: {
@@ -232,12 +291,94 @@ $(document).ready(function() {
             }
         }
     });
-    
+
     $("#form-new-ej").submit(function() {
         return false;
     });
-    
+
+    $('#form-crear-user, #form-edit-user').validate({
+        debug: true,
+        rules: {
+            nombre: {
+                required: true,
+                minlength: 5
+            },
+            apellido: {
+                required: true,
+                minlength: 5
+            },
+            cotrasena: {
+                required: true,
+                minlength: 5
+            },
+            tipo: {
+                required: true
+            },
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        messages: {
+            nombre: {
+                required: "Por favor ingrese el nombre",
+                minlength: "Por favor ingrese mínino 5 caracteres"
+            },
+            apellido: {
+                required: "Por favor ingrese el apellido",
+                minlength: "Por favor ingrese mínino 5 caracteres"
+            },
+            cotrasena: {
+                required: "Por favor ingrese la contraseña",
+                minlength: "Por favor ingrese mínino 5 caracteres"
+            },
+            tipo: {
+                required: "Por favor ingrese el tipo de usuario",
+            },
+            email: {
+                required: "Por favor ingrese el email del usuario",
+                email: "Formato de email invalido"
+            }
+        }
+    });
+
+    $("#form-crear-user").submit(function() {
+        return false;
+    });
+
     /* -------------------------------------------------------------------*/
+
+    $(".userTipo").change(function() {
+        $(".cargo-data").css("display", "none");
+        $(".materia-data").css("display", "none");
+        $(".estudiante-data").css("display", "none");
+        $(".grado-data").css("display", "none");
+        $(".parentesco-data").css("display", "none");
+
+        var tipo = $(this).val();
+        switch (tipo) {
+            case "1":
+                $(".other-data").slideDown("fast");
+                $(".cargo-data").css("display", "block");
+                break;
+            case "2":
+                $(".other-data").slideDown("fast");
+                $(".materia-data").css("display", "block");
+                break;
+            case "4":
+                $(".other-data").slideDown("fast");
+                $(".estudiante-data").css("display", "block");
+                $(".grado-data").css("display", "block");
+                break;
+            case "5":
+                $(".other-data").slideDown("fast");
+                $(".parentesco-data").css("display", "block");
+                break;
+            default :
+                $(".other-data").slideUp("fast");
+                break;
+        }
+    });
 
     $("#btn-login").click(function() {
         if ($("#form-login").validate().checkForm()) {
@@ -284,7 +425,7 @@ $(document).ready(function() {
                 success: function(data) {
                     var result = $.parseJSON(data);
                     if (result.return) {
-                        window.location = '/author/list';
+                        window.location = init.WEBSITE_URL + '/author/list';
                     }
                 }
             });
@@ -304,7 +445,7 @@ $(document).ready(function() {
                 success: function(data) {
                     var result = $.parseJSON(data);
                     if (result.return) {
-                        window.location = '/editorial/list';
+                        window.location = init.WEBSITE_URL + '/editorial/list';
                     }
                 }
             });
@@ -353,13 +494,13 @@ $(document).ready(function() {
                 success: function(data) {
                     var result = $.parseJSON(data);
                     if (result.return) {
-                        window.location = '/book/list';
+                        window.location = init.WEBSITE_URL + '/book/list';
                     }
                 }
             });
         }
     });
-    
+
     $('.search-book').click(function() {
         window.location = '/biblioteca/search/' + $('.seleccione-filtro').val() + '/' + $('#searchText').val();
     });
@@ -375,46 +516,71 @@ $(document).ready(function() {
     });
 
     $(".btn-crear-user").click(function() {
-        if ($(".form-crear-user").validate().checkForm()) {
-            var nombre = $('.nombre').val();
-            var apellido = $('.apellido').val();
-            var cotrasena = $('.contrasena').val();
-            var email = $('.email').val();
+        if ($("#form-crear-user").validate().checkForm()) {
+            var nombre = $('#nombre').val();
+            var apellido = $('#apellido').val();
+            var contrasena = $('#contrasena').val();
+            var email = $('#email').val();
             var userTipo = $('.userTipo').val();
+            
+            var otherData = "";
+            var otherData2 = "";            
+
+            switch (userTipo) {
+                case "1":
+                    otherData = $('#cargo').val();
+                    break;
+                case "2":
+                    otherData = $('#materia').val();
+                    break;
+                case "4":
+                    otherData = $('#estFamiliar').val();
+                    otherData2 = $('#estGrado').val();
+                    break;
+                case "5":
+                    otherData = $('#fmParentesco').val();
+                    break;
+            }
+
             $.ajax({
                 type: "POST",
                 url: init.WEBSITE_URL + "php/saveUser.php",
                 async: false,
                 data: {
                     nombre: nombre,
-                    contrasena: cotrasena,
+                    contrasena: contrasena,
                     apellido: apellido,
                     email: email,
-                    userTipo: userTipo
+                    userTipo: userTipo,
+                    otherData: otherData,
+                    otherData2: otherData2
                 },
                 success: function(data) {
                     var result = $.parseJSON(data);
+                    console.log(result);
                     if (result.return) {
-                        window.location = '/user/list';
+                        window.location = init.WEBSITE_URL + '/user/list';
+                    } else {
+                        alert(result.mensaje);
                     }
                 }
             });
         }
     });
-    
+
     $(".btn-modal-new-ej").click(function() {
         var book = $(this).attr('data-book');
         $('.guardar-ejemplar').attr('data-book', book);
         $('#modalEjemplar').modal('show');
-        
+
     });
-    
+
     $(".guardar-ejemplar").click(function() {
         if ($("#form-new-ej").validate().checkForm()) {
             var book = $(this).attr('data-book');
             var codigo = $('#codigo').val();
             var descripcion = $('#descripcion').val();
-            
+
             $.ajax({
                 type: "POST",
                 url: init.WEBSITE_URL + "php/saveEjemplar.php",
@@ -426,11 +592,10 @@ $(document).ready(function() {
                 },
                 success: function(data) {
                     var result = $.parseJSON(data);
-                    console.log(data);
                     if (result.return) {
                         location.reload(true);
-                    }else{
-                        alert(result.mensaje);                        
+                    } else {
+                        alert(result.mensaje);
                     }
                 }
             });

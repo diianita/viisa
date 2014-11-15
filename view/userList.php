@@ -54,10 +54,10 @@ $Usuarios = $cl_usuarios->getUsuarios();
                                     
                                     <td><?php echo ($value['enabled'] == 1)?'Activo':'Inactivo'?></td>
                                     <td>
-                                        <a href="/user/edit/<?php echo $value['id']?>" class="btn btn-xs btn-primary margin-right-5px">
+                                        <a href="/user/edit/<?php echo $value['idu']?>" class="btn btn-xs btn-primary margin-right-5px">
                                             <span class="glyphicon glyphicon-pencil">
                                         </a>
-                                        <a class="btn btn-xs btn-danger margin-right-5px">
+                                        <a title="Eliminar usuario" class="btn btn-xs btn-danger" onclick='deleteUsuario(<?php echo $value['idu'] ?>)'>
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </a>
                                     </td>

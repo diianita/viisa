@@ -44,11 +44,6 @@ switch ($user_type) {
                             <h2>Dashboard</h2>
 
                             <div class="margin-top-5px">
-                                <a class="btn btn-info btn-lg" href="/admInformation/">
-                                    <i class="glyphicon glyphicon-book"></i>
-                                    <br />
-                                    <h3>Informaci&oacute;n</h3>
-                                </a>
                                 <a class="btn btn-info btn-lg" href="/user/list/">
                                     <i class="glyphicon glyphicon-user"></i>
                                     <br />

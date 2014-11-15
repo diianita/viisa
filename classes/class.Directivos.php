@@ -24,28 +24,23 @@ class Directivos {
 
         return $users;
     }
+    
+    public function createPeronal($data) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $db->where("a.usuario", $data['usuario']);
+        $usuario = $db->get("Personal as a");
 
-    public function createDirectivo($usuario, $directivo) {
-        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');       
-        $idUser = $db->insert('Usuario', $usuario);
-        
-        if ($idUser) {
-            $data = Array("usuario" => $idUser, "descripcion" => $directivo);
-            $idManager = $db->insert('Personal', $data);
-
-            if ($idManager) {
-                echo "bien";
-                return array("return" => true, "mensaje" => "Directivo creado!");
+        if (count($usuario) > 0) {
+            return array("return" => false, "mensaje" => "Hubo un error, el personal ya existe");
+        } else {
+            $idPersonal = $db->insert('Personal', $data);
+            if ($idPersonal) {
+                return array("return" => true, "mensaje" => "Personal creado!");
             } else {
-                echo "mal 2";
                 return array("return" => false, "mensaje" => "Hubo un error, intentelo nuevamente.");
             }
-        } else {
-            echo "mal 1";
-            return array("return" => false, "mensaje" => "Hubo un error, intentelo nuevamente.");
         }
     }
-
 }
 
 ?>
