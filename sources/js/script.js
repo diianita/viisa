@@ -339,6 +339,9 @@ $(document).ready(function() {
                 required: "Por favor ingrese el email del usuario",
                 email: "Formato de email invalido"
             }
+        },
+        submitHandler: function(form) {
+            form.submit();
         }
     });
 

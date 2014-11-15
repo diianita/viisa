@@ -35,7 +35,7 @@ if ($user_create['return']) {
             $array_result = $cl_directivos->createPeronal($data2);
             break;
         case "4": //Estudiante
-            $data2 = Array("usuario" => $user_create['id'], "grado" => Page::parseRequestVariable('otherData'), "familiar" => Page::parseRequestVariable('otherData2'));
+            $data2 = Array("usuario" => $user_create['id'], "familiar" => Page::parseRequestVariable('otherData'), "grado" => Page::parseRequestVariable('otherData2'));
             $array_result = $cl_estudiante->createEstudiante($data2);
             break;
         case "5": //Familiar
