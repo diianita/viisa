@@ -29,7 +29,6 @@ class Author {
         if ($idAuthor) {
             return array("return" => true, "mensaje" => "Autor creado!");
         } else {
-            //echo "mal 2";
             return array("return" => false, "mensaje" => "Hubo un error, intentelo nuevamente.");
         }
     }

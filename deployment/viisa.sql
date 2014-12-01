@@ -144,7 +144,6 @@ DROP TABLE IF EXISTS `viisa`.`Prestamo` ;
 
 CREATE  TABLE IF NOT EXISTS `viisa`.`Prestamo` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `estado` INT(11) NULL ,
   `usuario` INT(11) NOT NULL ,
   `ejemplar` INT(11) NOT NULL ,
   `enabled` INT NULL DEFAULT 1 ,
@@ -272,7 +271,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `viisa`;
-INSERT INTO `viisa`.`Prestamo` (`id`, `estado`, `usuario`, `ejemplar`, `enabled`) VALUES (1, 1, 1, 1, 1);
+INSERT INTO `viisa`.`Prestamo` (`id`, `usuario`, `ejemplar`, `enabled`) VALUES (1, 1, 1, 1);
 
 COMMIT;
 

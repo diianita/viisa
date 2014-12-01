@@ -56,6 +56,38 @@ class Ejemplar {
             return array("success" => false, "mensaje" => "Hubo un error, el ejemplar está en prestamo");
         }
     }
+
+    public function getEjemplarStatus($ejemplar_id) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $db->where("p.ejemplar", $ejemplar_id);
+        $status = $db->getOne("Prestamo as p", null, null);
+
+        return $status;
+    }
+
+    public function retornarEjemplar($id) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $db->where('ejemplar', $id);
+        $delete = $db->delete('Prestamo');
+
+        if($delete){
+            return array("success" => true, "mensaje" => "Libro prestado.");
+        }else{
+            return array("success" => false, "mensaje" => "Hubo un error.");
+        }
+    }
+
+    public function prestarEjemplar($data) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $prestamo = $db->insert('Prestamo', $data);
+
+        if ($prestamo) {
+            return array("success" => true, "mensaje" => "Libro en prestamo.");
+        } else {
+            return array("success" => false, "mensaje" => "Hubo un error, intentelo nuevamente.");
+        }
+    }
+
 }
 
 ?>

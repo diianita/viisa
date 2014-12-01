@@ -119,6 +119,52 @@ function deleteUsuario(id) {
     }
 }
 
+function retornarEjemplar(id) {
+    if (confirm("Desea continuar?")) {
+        $.ajax({
+            type: "POST",
+            url: init.WEBSITE_URL + "php/retornarEjemplar.php",
+            async: false,
+            data: {
+                id: id
+            },
+            success: function(data) {
+                var result = $.parseJSON(data);
+                if (result.success) {
+                    location.reload(true);
+                } else {
+                    alert(result.mensaje);
+                }
+            }
+        });
+    }
+}
+
+function prestarEjemplar() {
+    if (confirm("Desea continuar?")) {
+        var ejemplar = $(".btn-prestar-libro").attr('data-ejemplar');
+        var usuario = $("#user-prestamo").val();
+        
+        $.ajax({
+            type: "POST",
+            url: init.WEBSITE_URL + "php/prestarEjemplar.php",
+            async: false,
+            data: {
+                ejemplar: ejemplar,
+                usuario:usuario
+            },
+            success: function(data) {
+                var result = $.parseJSON(data);
+                if (result.success) {
+                    location.reload(true);
+                } else {
+                    alert(result.mensaje);
+                }
+            }
+        });
+    }
+}
+
 $(document).ready(function() {
 
     $('#form-login').validate({
@@ -575,7 +621,6 @@ $(document).ready(function() {
         var book = $(this).attr('data-book');
         $('.guardar-ejemplar').attr('data-book', book);
         $('#modalEjemplar').modal('show');
-
     });
 
     $(".guardar-ejemplar").click(function() {
@@ -604,6 +649,13 @@ $(document).ready(function() {
             });
         }
     });
+    
+    $(".btn-modal-prestamo").click(function() {
+        var ejemplar = $(this).attr('data-ejemplar');
+        $('.btn-prestar-libro').attr('data-ejemplar', ejemplar);
+        $('#modalPrestarLibro').modal('show');
+    });
+
 });
 
 	

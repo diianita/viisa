@@ -3,13 +3,19 @@ include 'headerBiblioteca.php';
 
 Page::loadClass("Materias");
 Page::loadClass("Editorial");
+Page::loadClass("Ejemplar");
 Page::loadClass("Author");
 Page::loadClass("Books");
 
+Page::loadClass("Usuario");
+
 $cl_materias = new Materias();
 $cl_editorial = new Editorial();
+$cl_ejemplar = new Ejemplar();
 $cl_autores = new Author();
 $cl_book = new Books();
+
+$cl_user = new Usuario();
 
 $book_id = $_REQUEST['value'];
 $book = $cl_book->getBook($book_id);
@@ -19,6 +25,7 @@ $materia = $cl_materias->getMateria($book['materia']);
 $autor = $cl_autores->getAuthor($book['autor']);
 $editorial = $cl_editorial->getEditorial($book['editorial']);
 
+$users = $cl_user->getUsuarios("u.tipoUsuario");
 ?>
 <div class="content">
     <div class="container box">
@@ -63,15 +70,30 @@ $editorial = $cl_editorial->getEditorial($book['editorial']);
                             ?>
                             <div class="alert alert-warning">
                                 <div class="">
-                                    <a title="Eliminar Ejemplar" class="btn btn-xs btn-danger pull-right"onclick='deleteEjemplar(<?php echo $value['id'] ?>)'>
+                                    <a title="Eliminar Ejemplar" class="btn btn-xs btn-danger pull-right" onclick='deleteEjemplar(<?php echo $value['id'] ?>)'>
                                         <span class="glyphicon glyphicon-remove"></span>
                                     </a>
-                                    <a title="Prestar Ejemplar" class="btn btn-xs btn-primary pull-right" style="margin-right: 4px;">
-                                        <span class="glyphicon glyphicon-export"></span>
-                                    </a>
-                                    <a title="Retornar Ejemplar" class="btn btn-xs btn-success pull-right" style="margin-right: 4px;">
-                                        <span class="glyphicon glyphicon-import"></span>
-                                    </a>
+                                    <?php
+                                    $status = $cl_ejemplar->getEjemplarStatus($value['id']);
+                                    
+                                    if(isset($status)){
+                                        if($status['enabled'] == "1"){
+                                            ?>
+                                            <a title="Retornar Ejemplar" class="btn btn-xs btn-success pull-right" style="margin-right: 4px;" onclick='retornarEjemplar(<?php echo $value['id'] ?>)'>
+                                                <span class="glyphicon glyphicon-import"></span>
+                                            </a>
+                                            <?php
+                                        }
+                                    }else{
+                                        ?>
+                                        <a title="Prestar Ejemplar" class="btn btn-xs btn-primary pull-right btn-modal-prestamo" style="margin-right: 4px;" data-ejemplar="<?php echo $value['id'] ?>">
+                                            <span class="glyphicon glyphicon-export"></span>
+                                        </a>
+                                        <?php
+                                    }
+                                    ?>
+                                    
+                                    
                                 </div>
                                 <div class="">
                                     <label>Código:</label>
@@ -133,4 +155,32 @@ $editorial = $cl_editorial->getEditorial($book['editorial']);
 </div>
 
 
-
+<!-- Modal -->
+<div class="modal fade" id="modalPrestarLibro" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Prestar Libro</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <select class="form-control" name="user-prestamo" id="user-prestamo">
+                        <option value="">Seleccione un Usario</option>
+                        <?php
+                        foreach ($users as $key => $value) {
+                            ?>
+                        <option value="<?php echo $value['id'] ?>"><?php echo "(".ucwords($value['desc']).") ".$value['email'] ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary btn-prestar-libro" data-ejemplar="" onclick='prestarEjemplar()'>Prestar</button>
+            </div>
+        </div>
+    </div>
+</div>

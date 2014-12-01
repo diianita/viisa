@@ -8,9 +8,9 @@ class Usuario {
         
     }
 
-    public function getUsuarios() {
+    public function getUsuarios($order = "u.id") {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
-        $usuarios = $db->rawQuery('SELECT *, a.id as idu from Usuario as a, TipoUsuario as tu where a.TipoUsuario=tu.id and a.enabled=1 order by a.id', null);
+        $usuarios = $db->rawQuery('SELECT *, u.id as idu from Usuario as u, TipoUsuario as tu where u.TipoUsuario=tu.id and u.enabled=1 order by '.$order, null);
 
         return $usuarios;
     }
