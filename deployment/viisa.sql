@@ -146,6 +146,8 @@ CREATE  TABLE IF NOT EXISTS `viisa`.`Prestamo` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `usuario` INT(11) NOT NULL ,
   `ejemplar` INT(11) NOT NULL ,
+  `fechaPrestamo` DATE NULL DEFAULT NULL ,
+  `fechaEntrega` DATE NULL DEFAULT NULL ,
   `enabled` INT NULL DEFAULT 1 ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB;
@@ -271,7 +273,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `viisa`;
-INSERT INTO `viisa`.`Prestamo` (`id`, `usuario`, `ejemplar`, `enabled`) VALUES (1, 1, 1, 1);
+INSERT INTO `viisa`.`Prestamo` (`id`, `usuario`, `ejemplar`, `fechaPrestamo`, `fechaEntrega`, `enabled`) VALUES (1, 1, 1, NULL, NULL, 1);
 
 COMMIT;
 

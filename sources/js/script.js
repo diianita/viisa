@@ -394,8 +394,66 @@ $(document).ready(function() {
     $("#form-crear-user").submit(function() {
         return false;
     });
+    
+    $('#fm-filter-report').validate({
+        debug: true,
+        rules: {
+            typeUser: {
+                required: true
+            },
+            user: {
+                required: true
+            },
+            materia: {
+                required: true
+            },
+            prestamo: {
+                required: true
+            }
+        },
+        messages: {
+            typeUser: {
+                required: "Este campo es obligatorio"
+            },
+            user: {
+                required: "Este campo es obligatorio"
+            },
+            materia: {
+                required: "Este campo es obligatorio"
+            },
+            prestamo: {
+                required: "Este campo es obligatorio"
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
 
     /* -------------------------------------------------------------------*/
+
+    $(".select-type").change(function() {
+        var typeUser = $(this).val();
+        
+        if(typeUser == ""){
+            $('.select-users').html("");
+        }else{
+            $.ajax({
+                type: "POST",
+                url: init.WEBSITE_URL + "php/listUsers.php",
+                async: false,
+                data: {
+                    typeUser: typeUser
+                },
+                success: function(data) {
+                    var result = $.parseJSON(data);
+                    $('.select-users').html(result);
+                }
+            });  
+        }
+              
+    });
+
 
     $(".userTipo").change(function() {
         $(".cargo-data").css("display", "none");

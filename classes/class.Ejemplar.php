@@ -66,18 +66,20 @@ class Ejemplar {
     }
 
     public function retornarEjemplar($id) {
-        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
-        $db->where('ejemplar', $id);
-        $delete = $db->delete('Prestamo');
+        $fechaEntrega = date('Y-m-d');
+        $data = Array('enabled' => 0, 'fechaEntrega' => $fechaEntrega);
 
-        if($delete){
-            return array("success" => true, "mensaje" => "Libro prestado.");
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $db->where('ejemplar', $id);       
+        
+        if ($db->update('Prestamo', $data)){
+            return array("success" => true, "mensaje" => "Libro devuelto!");
         }else{
-            return array("success" => false, "mensaje" => "Hubo un error.");
+            return array("success" => false, "mensaje" => "Hubo un error!");
         }
     }
 
-    public function prestarEjemplar($data) {
+    public function prestarEjemplar($data) {        
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
         $prestamo = $db->insert('Prestamo', $data);
 

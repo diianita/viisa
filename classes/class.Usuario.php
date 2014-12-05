@@ -14,6 +14,13 @@ class Usuario {
 
         return $usuarios;
     }
+
+    public function getUsuariosByTipo($tipo) {
+        $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');
+        $usuarios = $db->rawQuery('SELECT * from Usuario as u where u.TipoUsuario='.$tipo.' and u.enabled=1', null);
+
+        return $usuarios;
+    }
     
     public function getFamiliares() {
         $db = new Mysqlidb(Page::$dbhost, Page::$dbuser, Page::$dbpass, Page::$dbname) or die('No se pudo establecer la conexion con la base de datos');

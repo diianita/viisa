@@ -21,7 +21,7 @@
                         <ul class="nav navbar-nav">
                             <li class="current">
                                 <a href="/">Inicio</a></li>
-                            <li><a href="/#quines">Quienes Somos</a></li>
+                            <li><a href="/#quines">Qui&eacute;nes Somos</a></li>
                             <li><a href="/#mision">Misi&oacuten</a></li>
                             <li><a href="/#vision">Visi&oacute;n</a></li>
                             <li><a href="/#contact">Contacto</a></li>

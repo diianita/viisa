@@ -40,6 +40,9 @@ RewriteRule ^([a-zA-Z0-9]*)/edit/(.*)$ index.php?function=$1Edit&value=$2
 RewriteRule ^([a-zA-Z0-9]*)/detail/(.*)/$ index.php?function=$1Detail&value=$2
 RewriteRule ^([a-zA-Z0-9]*)/detail/(.*)$ index.php?function=$1Detail&value=$2
 
+RewriteRule ^([a-zA-Z0-9]*)/generate/$ index.php?function=$1Generate
+RewriteRule ^([a-zA-Z0-9]*)/generate index.php?function=$1Generate
+
 RewriteRule ^([a-zA-Z0-9]*)/$ index.php?function=$1
 RewriteRule ^([a-zA-Z0-9]*)$ index.php?function=$1
 </IfModule>

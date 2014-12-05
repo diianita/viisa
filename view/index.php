@@ -17,6 +17,15 @@
             <div><img u="image" src="/img/photography/007.jpg" /></div>
             <div><img u="image" src="/img/photography/008.jpg" /></div>
             <div><img u="image" src="/img/photography/009.jpg" /></div>
+            
+            <!--
+            <div><img u="image" src="<?php echo Page::getUrl() ?>/sources/images/sliderHome/001.JPG" style="width: 820px; height: 400px;"/></div>
+            <div><img u="image" src="<?php echo Page::getUrl() ?>/sources/images/sliderHome/003.JPG" style="width: 820px; height: 400px;"/></div>
+            <div><img u="image" src="<?php echo Page::getUrl() ?>/sources/images/sliderHome/011.JPG" style="width: 820px; height: 400px;"/></div>
+            <div><img u="image" src="<?php echo Page::getUrl() ?>/sources/images/sliderHome/014.JPG" style="width: 820px; height: 400px;"/></div>
+            <div><img u="image" src="<?php echo Page::getUrl() ?>/sources/images/sliderHome/411.JPG" style="width: 820px; height: 400px;"/></div>
+            <div><img u="image" src="<?php echo Page::getUrl() ?>/sources/images/sliderHome/417.JPG" style="width: 820px; height: 400px;"/></div>
+            -->
         </div>
 
         <!-- Arrow Navigator Skin Begin -->
@@ -70,7 +79,7 @@
         <section id="quines" class="row">
             <div class="col-sm-12">
                 <div class="section-header text-right">
-                    <h2>Quienes somos</h2>
+                    <h2>Qui&eacute;nes somos</h2>
                 </div>
             </div>
             <div class="col-md-12 col-sm-12"> <!-- class="col-md-5 col-sm-12" -->

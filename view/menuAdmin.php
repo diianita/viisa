@@ -20,7 +20,7 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li><a href="/dashboard">Dashboard</a></li>
+                            <li><a href="/dashboard">Inicio</a></li>
                             <li><a href="/user/list/">Usuarios</a></li>
                             <li><a href="/logout">Cerrar Sesion!</a></li>                           
                         </ul>

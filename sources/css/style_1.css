@@ -1022,6 +1022,12 @@ Copyrights =========*/
     margin-top: -4px;
 }
 
+.logo h6{
+    margin-left: 96px;
+    font-size: 22px;
+    margin-top: 4px;
+}
+
 .margin-right-5px{
     margin-right:5px;
 }

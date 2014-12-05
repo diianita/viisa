@@ -14,23 +14,26 @@
                         <!--== Logo ==-->
                         <a href="/">
                             <span class="navbar-brand logo">
-                                <span class="logo-balbino"></span><h3>Colegio Balbino García</h3>
+                                <span class="logo-balbino"></span>
+                                <h6>Colegio Balbino García</h6>
                             </span>
                         </a>
 
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li><a href="/dashboard">Dashboard</a></li>
+                            <li><a href="/dashboard">Inicio</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Libros <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inventario <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="/book/list">Lista</a></li>
                                     <li><a href="/findBook">Buscar</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/author/list">Autores</a></li>
                             <li><a href="/editorial/list">Editoriales</a></li>
+                            <li><a href="/author/list">Autores</a></li>
+                            <li><a href="/reports/">Reportes</a></li>
+                            <li><a href="/resources/">Recursos</a></li>
                             <li><a href="/logout">Cerrar Sesi&oacute;n!</a></li>                           
                         </ul>
                     </div>

@@ -1,4 +1,7 @@
 <?php
+
+include 'headerBiblioteca.php';
+
 switch ($user_type) {
     case "3": //bibliotecario
         ?>
@@ -7,7 +10,7 @@ switch ($user_type) {
                 <section id="dashboard" class="row">
                     <div class="col-sm-12">
                         <div class="section-header text-center dashboard">
-                            <h2>Dashboard</h2>
+                            
                             <div class="margin-top-5px">
                                 <a class="btn btn-info btn-lg" href="/book/list">
                                     <i class="glyphicon glyphicon-book"></i>
