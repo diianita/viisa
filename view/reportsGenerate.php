@@ -16,29 +16,12 @@ $materia_id = Page::parseRequestVariable('materia');
 $prestamo_estado = Page::parseRequestVariable('prestamo');
 
 $user = $cl_user->getUsuario($user_id);
-$books_prestamo = $books_devuelto = null;
-
-switch ($prestamo_estado) {
-    case "all":
-        $books_prestamo = $cl_reporte->getBooksByUser($user_id, $materia_id, $prestamo_estado);
-        $books_devuelto = $cl_reporte->getBooksByUser($user_id, $materia_id, $prestamo_estado);
-        break;
-    case "1": // en prestamo
-        $books_prestamo = $cl_reporte->getBooksByUser($user_id, $materia_id, $prestamo_estado);
-        break;
-    case "0": // devuelto
-        $books_devuelto = $cl_reporte->getBooksByUser($user_id, $materia_id, $prestamo_estado);
-        break;
-    default:
-        break;
-}
-
-// FALTA IMPRIMIR LA TABLA VALIDANDO DE QUE SEA NULO
+$books_prestamo = $cl_reporte->getBooksByUser($user_id, $materia_id, $prestamo_estado);
 
 ?>
 <div class="content">
     <div class="container box ">
-        <section id="adm-information" class="row padding-top-5px">
+        <section class="row padding-top-5px">
             <div class="col-sm-12">
                 <div class="section-header text-center">
                     <legend>
@@ -47,8 +30,52 @@ switch ($prestamo_estado) {
                     </legend>
                 </div>
             </div>
+            
             <div class="col-sm-12">
-                
+                <legend>
+                    <h2>Historial bibliotecario</h2>
+                </legend>
+            </div>
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <?php
+                    if(is_null($books_prestamo) || count($books_prestamo) <= 0){
+                    ?>
+                        <h5>El usuario no tiene historial bibliotecario</h5>
+                    <?php
+                    }else{
+                    ?>
+                        <table id="mytable" class="table table-bordred table-striped table-hover">
+                            <thead>
+                                <th>Libro</th>
+                                <th>Materia</th>
+                                <th>Ejemplar</th>
+                                <th>Fecha Prestamo</th>
+                                <th>Fecha Entrega</th>
+                                <th>Estado</th>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($books_prestamo as $key => $value) { ?>
+                                    <tr>
+                                        <td><?php echo $value['libro']?></td>
+                                        <td><?php echo $value['materia'] ?></td>
+                                        <td><?php echo $value['ejemplar'] ?></td>
+                                        <td><?php echo $value['fechaPrestamo'] ?></td>
+                                        <td><?php echo $value['fechaEntrega'] ?></td>
+                                        <td><?php 
+                                            $estado = ($value['estado'] == "1")? "En prestamo": "Devuelto";
+                                            echo $estado;
+                                        ?></td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    <?php
+                    }
+                    ?>
+
+                    <div class="clearfix"></div>
+                </div>
             </div>
         </section>
         <div id="gotop" class="gotop fa fa-arrow-up"></div>

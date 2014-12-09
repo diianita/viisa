@@ -22,7 +22,7 @@ class Reporte {
             $whereEstado = "p.enabled = ".$prestamo_estado." AND";
         }
 
-        $books = $db->rawQuery('SELECT l.nombre as libro, m.nombre as materia, e.codigo as ejemplar, p.fechaPrestamo as fechaPrestamo FROM Prestamo as p, Ejemplares as e, Libro as l, Materias as m where '.$whereEstado.' p.usuario = $user_id AND p.ejemplar = e.id AND e.libro = l.id AND '.$whereMateria, null);
+        $books = $db->rawQuery('SELECT l.nombre as libro, m.nombre as materia, e.codigo as ejemplar, p.fechaPrestamo as fechaPrestamo, p.fechaEntrega as fechaEntrega, p.enabled as estado FROM Prestamo as p, Ejemplares as e, Libro as l, Materias as m where '.$whereEstado.' p.usuario = '.$user_id.' AND p.ejemplar = e.id AND e.libro = l.id AND '.$whereMateria. ' ORDER BY p.enabled ASC, p.fechaPrestamo ASC', null);
 
         return $books;
     }
