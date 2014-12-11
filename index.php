@@ -36,6 +36,7 @@ if (strlen($function) == 0) {
                 case "managers":
                 case "teachers":
                 case "news":
+                case "resources":
                 case "findBook":
                     include 'view/' . $function . '.php';
                     break;

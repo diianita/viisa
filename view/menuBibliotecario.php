@@ -33,7 +33,6 @@
                             <li><a href="/editorial/list">Editoriales</a></li>
                             <li><a href="/author/list">Autores</a></li>
                             <li><a href="/reports/">Reportes</a></li>
-                            <li><a href="/resources/">Recursos</a></li>
                             <li><a href="/logout">Cerrar Sesi&oacute;n!</a></li>                           
                         </ul>
                     </div>

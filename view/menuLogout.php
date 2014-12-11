@@ -19,8 +19,7 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li class="current">
-                                <a href="/">Inicio</a></li>
+                            <li><a href="/">Inicio</a></li>
                             <li><a href="/#quines">Qui&eacute;nes Somos</a></li>
                             <li><a href="/#mision">Misi&oacuten</a></li>
                             <li><a href="/#vision">Visi&oacute;n</a></li>
@@ -30,9 +29,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="/managers">Directivos</a></li>
                                     <li><a href="/teachers">Docentes</a></li>
-                                    <li><a href="/news">Noticias</a></li>
-                                    <li><a href="/findBook">Buscar libros</a></li>
-                                    <li><a href="/login">Iniciar sesi&oacute;n</a></li>
+                                    <li><a href="/resources/">Recursos</a></li>
                                 </ul>
                             </li>
                         </ul>
